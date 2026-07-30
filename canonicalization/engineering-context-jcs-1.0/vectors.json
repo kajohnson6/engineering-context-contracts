@@ -1,0 +1,64 @@
+{
+  "profile": "engineering-context-jcs-1.0",
+  "rfc": "RFC 8785",
+  "normalization": {
+    "datetime": "UTC RFC 3339, exactly six fractional digits, Z suffix",
+    "uuid": "lowercase RFC 4122 hyphenated string",
+    "numbers": "I-JSON / IEEE-754 binary64; NaN and Infinity rejected",
+    "unicode": "preserved without normalization",
+    "object_keys": "strings only"
+  },
+  "vectors": [
+    {
+      "name": "unicode-ordering-and-numbers",
+      "normalized_json": {
+        "z": 1.0,
+        "a": "é",
+        "nested": {
+          "β": 2,
+          "A": true
+        },
+        "array": [
+          null,
+          -0.0,
+          1e-7
+        ]
+      },
+      "canonical_utf8": "{\"a\":\"é\",\"array\":[null,0,1e-7],\"nested\":{\"A\":true,\"β\":2},\"z\":1}",
+      "sha256": "dcdeddcc0921263dcd9f5474dd012a950d59c9b4ddda5ca1735f87c51910f7ad"
+    },
+    {
+      "name": "versioned-artifact-reference",
+      "normalized_json": {
+        "schema_version": "1.0",
+        "artifact_schema_version": "1.2",
+        "artifact_type": "evidence-packet",
+        "uri": "component-lens://packets/example",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "canonical_utf8": "{\"artifact_schema_version\":\"1.2\",\"artifact_type\":\"evidence-packet\",\"schema_version\":\"1.0\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"uri\":\"component-lens://packets/example\"}",
+      "sha256": "5f9809c4a2a26d326ea44c57c354f6e3b9d163dc2a072e679bb43abcae9d66ee"
+    },
+    {
+      "name": "normalized-datetime-and-uuid",
+      "normalization_input": {
+        "id": {
+          "type": "uuid",
+          "value": "12345678-1234-5678-1234-567812345678"
+        },
+        "timestamp": {
+          "type": "datetime",
+          "value": "2026-07-29T12:00:00.123456-04:00"
+        },
+        "value": 1.0
+      },
+      "normalized_json": {
+        "id": "12345678-1234-5678-1234-567812345678",
+        "timestamp": "2026-07-29T16:00:00.123456Z",
+        "value": 1.0
+      },
+      "canonical_utf8": "{\"id\":\"12345678-1234-5678-1234-567812345678\",\"timestamp\":\"2026-07-29T16:00:00.123456Z\",\"value\":1}",
+      "sha256": "1246deeb4acab764e9e404df888f82f7b32c6416f67487300d8b4b923d42c1dc"
+    }
+  ]
+}

@@ -1,0 +1,719 @@
+{
+  "$defs": {
+    "AdmittedVerificationEvidenceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "admission_policy": {
+          "$ref": "#/$defs/RepositoryVerificationAdmissionPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "admitted-repository-verification-evidence",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "source_receipt": {
+          "$ref": "#/$defs/RepositoryVerificationReceiptRef"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "source_receipt",
+        "admission_policy",
+        "access_policy",
+        "repository_profile"
+      ],
+      "title": "AdmittedVerificationEvidenceRef",
+      "type": "object"
+    },
+    "ControlledAccessPolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri",
+        "sha256"
+      ],
+      "title": "ControlledAccessPolicyRef",
+      "type": "object"
+    },
+    "GitRepositorySnapshotRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "git-repository-snapshot",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "commit_sha": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Commit Sha",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_uri": {
+          "title": "Repository Uri",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "tree_sha": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Tree Sha",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "repository_uri",
+        "commit_sha",
+        "tree_sha",
+        "profile",
+        "access_policy",
+        "uri",
+        "sha256"
+      ],
+      "title": "GitRepositorySnapshotRef",
+      "type": "object"
+    },
+    "ReleasedVerificationArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_type": {
+          "enum": [
+            "source-snapshot",
+            "test-vector",
+            "result-json",
+            "log"
+          ],
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "uri",
+        "sha256"
+      ],
+      "title": "ReleasedVerificationArtifactRef",
+      "type": "object"
+    },
+    "ReleasedVerificationAssertion": {
+      "additionalProperties": false,
+      "properties": {
+        "assertion_id": {
+          "title": "Assertion Id",
+          "type": "string"
+        },
+        "behavioral_proof": {
+          "const": true,
+          "title": "Behavioral Proof",
+          "type": "boolean"
+        },
+        "case_id": {
+          "title": "Case Id",
+          "type": "string"
+        },
+        "diagnostic_codes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Diagnostic Codes",
+          "type": "array"
+        },
+        "evidence_class": {
+          "const": "verified-execution",
+          "title": "Evidence Class",
+          "type": "string"
+        },
+        "expected_value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Expected Value"
+        },
+        "normalized_type": {
+          "enum": [
+            "boolean",
+            "integer",
+            "string"
+          ],
+          "title": "Normalized Type",
+          "type": "string"
+        },
+        "observed_value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Observed Value"
+        },
+        "outcome": {
+          "enum": [
+            "pass",
+            "fail",
+            "error"
+          ],
+          "title": "Outcome",
+          "type": "string"
+        },
+        "semantic_key": {
+          "title": "Semantic Key",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assertion_id",
+        "semantic_key",
+        "case_id",
+        "normalized_type",
+        "expected_value",
+        "observed_value",
+        "outcome",
+        "diagnostic_codes",
+        "evidence_class",
+        "behavioral_proof"
+      ],
+      "title": "ReleasedVerificationAssertion",
+      "type": "object"
+    },
+    "RepositoryEvidenceProfileRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-evidence-profile",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "access_policy"
+      ],
+      "title": "RepositoryEvidenceProfileRef",
+      "type": "object"
+    },
+    "RepositoryVerificationAdmissionPolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-verification-admission-policy",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "target_snapshot": {
+          "$ref": "#/$defs/GitRepositorySnapshotRef"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "target_snapshot",
+        "repository_profile",
+        "access_policy"
+      ],
+      "title": "RepositoryVerificationAdmissionPolicyRef",
+      "type": "object"
+    },
+    "RepositoryVerificationReceiptRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-verification-receipt",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "target_snapshot": {
+          "$ref": "#/$defs/GitRepositorySnapshotRef"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "target_snapshot",
+        "repository_profile",
+        "access_policy"
+      ],
+      "title": "RepositoryVerificationReceiptRef",
+      "type": "object"
+    },
+    "RepositoryVerificationReleasePolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "admission_policy": {
+          "$ref": "#/$defs/RepositoryVerificationAdmissionPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-verification-release-policy",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "recipient": {
+          "title": "Recipient",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "access_policy",
+        "repository_profile",
+        "admission_policy",
+        "recipient"
+      ],
+      "title": "RepositoryVerificationReleasePolicyRef",
+      "type": "object"
+    }
+  },
+  "$id": "https://kajohnson6.github.io/engineering-context-contracts/schemas/extensions/repository-verification-release/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "access_policy": {
+      "$ref": "#/$defs/ControlledAccessPolicyRef"
+    },
+    "admission_policy": {
+      "$ref": "#/$defs/RepositoryVerificationAdmissionPolicyRef"
+    },
+    "artifact_type": {
+      "const": "repository-verification-release-receipt",
+      "title": "Artifact Type",
+      "type": "string"
+    },
+    "assertions": {
+      "items": {
+        "$ref": "#/$defs/ReleasedVerificationAssertion"
+      },
+      "minItems": 1,
+      "title": "Assertions",
+      "type": "array"
+    },
+    "behavioral_proof": {
+      "const": true,
+      "title": "Behavioral Proof",
+      "type": "boolean"
+    },
+    "case_ids": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Case Ids",
+      "type": "array"
+    },
+    "completed_at": {
+      "format": "date-time",
+      "title": "Completed At",
+      "type": "string"
+    },
+    "container_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Container Digest",
+      "type": "string"
+    },
+    "content_contract": {
+      "const": "normalized-verification-outcomes-diagnostics-and-artifact-references-only",
+      "title": "Content Contract",
+      "type": "string"
+    },
+    "environment_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Environment Digest",
+      "type": "string"
+    },
+    "evidence_class": {
+      "const": "verified-execution",
+      "title": "Evidence Class",
+      "type": "string"
+    },
+    "input_artifacts": {
+      "items": {
+        "$ref": "#/$defs/ReleasedVerificationArtifactRef"
+      },
+      "title": "Input Artifacts",
+      "type": "array"
+    },
+    "log_artifacts": {
+      "items": {
+        "$ref": "#/$defs/ReleasedVerificationArtifactRef"
+      },
+      "title": "Log Artifacts",
+      "type": "array"
+    },
+    "no_raw_content": {
+      "const": true,
+      "title": "No Raw Content",
+      "type": "boolean"
+    },
+    "outcome": {
+      "enum": [
+        "pass",
+        "fail",
+        "error"
+      ],
+      "title": "Outcome",
+      "type": "string"
+    },
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "recipient": {
+      "const": "engineering-memory",
+      "title": "Recipient",
+      "type": "string"
+    },
+    "release_policy": {
+      "$ref": "#/$defs/RepositoryVerificationReleasePolicyRef"
+    },
+    "repository_id": {
+      "title": "Repository Id",
+      "type": "string"
+    },
+    "repository_profile": {
+      "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+    },
+    "result_artifacts": {
+      "items": {
+        "$ref": "#/$defs/ReleasedVerificationArtifactRef"
+      },
+      "title": "Result Artifacts",
+      "type": "array"
+    },
+    "runner_id": {
+      "title": "Runner Id",
+      "type": "string"
+    },
+    "runner_version": {
+      "title": "Runner Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_evidence": {
+      "$ref": "#/$defs/AdmittedVerificationEvidenceRef"
+    },
+    "source_evidence_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Evidence Sha256",
+      "type": "string"
+    },
+    "source_verification_receipt": {
+      "$ref": "#/$defs/RepositoryVerificationReceiptRef"
+    },
+    "suite_id": {
+      "title": "Suite Id",
+      "type": "string"
+    },
+    "target_snapshot": {
+      "$ref": "#/$defs/GitRepositorySnapshotRef"
+    },
+    "toolchain_digest": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Toolchain Digest",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_type",
+    "source_evidence",
+    "source_evidence_sha256",
+    "source_verification_receipt",
+    "admission_policy",
+    "release_policy",
+    "project_id",
+    "repository_id",
+    "access_policy",
+    "repository_profile",
+    "target_snapshot",
+    "recipient",
+    "runner_id",
+    "runner_version",
+    "suite_id",
+    "case_ids",
+    "toolchain_digest",
+    "environment_digest",
+    "container_digest",
+    "completed_at",
+    "assertions",
+    "outcome",
+    "input_artifacts",
+    "result_artifacts",
+    "log_artifacts",
+    "evidence_class",
+    "behavioral_proof",
+    "no_raw_content",
+    "content_contract"
+  ],
+  "title": "RepositoryVerificationReleaseReceipt",
+  "type": "object"
+}

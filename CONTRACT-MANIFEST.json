@@ -1,0 +1,48 @@
+{
+  "artifacts": [
+    {
+      "byte_count": 2280,
+      "path": "canonicalization/engineering-context-jcs-1.0/vectors.json",
+      "sha256": "0c07daec0782d860d4298aaf91dac4f9263ae9be81004a2b41c2168c0d5dc491"
+    },
+    {
+      "byte_count": 6336,
+      "path": "fixtures/controlled-field-release-rev-c-d-failure.json",
+      "sha256": "c4ed4b7d19cf2ce84cf47879ac47ef810624bd683dafaba1a86fe5af81c00369"
+    },
+    {
+      "byte_count": 20863,
+      "path": "fixtures/repository-structural-release-failure.json",
+      "sha256": "751ea29fa77f118a3c3eec2d02cb343343ee7aadbee85e8b72ced5ab5f5ed326"
+    },
+    {
+      "byte_count": 19203,
+      "path": "fixtures/repository-verification-release-failure.json",
+      "sha256": "d516b39bf1d62df8ed8bbf6cca1249c6b707f462ac0575f3bfd7a4fde586b3e7"
+    },
+    {
+      "byte_count": 36438,
+      "path": "schemas/evidence-serving/1.0/schema.json",
+      "sha256": "11f4443add30ad40456f1b007a92e6995688f6a807a8292ee1faf8a089cb3315"
+    },
+    {
+      "byte_count": 11104,
+      "path": "schemas/extensions/controlled-field-release/1.0/schema.json",
+      "sha256": "ee875b037cff98cffc71b663dc747ce218bf5695bd583c40658b8a05bb3e6f41"
+    },
+    {
+      "byte_count": 18357,
+      "path": "schemas/extensions/repository-structural-release/1.0/schema.json",
+      "sha256": "ffdf312511a34bf958001619c47df87854ae922128b9d66e27ae3fc799d7b277"
+    },
+    {
+      "byte_count": 18000,
+      "path": "schemas/extensions/repository-verification-release/1.0/schema.json",
+      "sha256": "da0c2ddd5e06eacc1b61f9d094e889c1d38460213870887276734e2e20858f20"
+    }
+  ],
+  "canonicalization_profile": "engineering-context-jcs-1.0",
+  "core_contract_version": "1.0",
+  "manifest_version": "1.0",
+  "package_version": "0.1.0"
+}

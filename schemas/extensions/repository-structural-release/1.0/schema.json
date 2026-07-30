@@ -1,0 +1,735 @@
+{
+  "$defs": {
+    "ControlledAccessPolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri",
+        "sha256"
+      ],
+      "title": "ControlledAccessPolicyRef",
+      "type": "object"
+    },
+    "GitRepositorySnapshotRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "git-repository-snapshot",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "commit_sha": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Commit Sha",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_uri": {
+          "title": "Repository Uri",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "tree_sha": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Tree Sha",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "repository_uri",
+        "commit_sha",
+        "tree_sha",
+        "profile",
+        "access_policy",
+        "uri",
+        "sha256"
+      ],
+      "title": "GitRepositorySnapshotRef",
+      "type": "object"
+    },
+    "ReleasedRepositoryBlobRef": {
+      "additionalProperties": false,
+      "properties": {
+        "blob_id": {
+          "pattern": "^repository-blob:[0-9a-f]{64}$",
+          "title": "Blob Id",
+          "type": "string"
+        },
+        "byte_count": {
+          "minimum": 0,
+          "title": "Byte Count",
+          "type": "integer"
+        },
+        "commit_sha": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Commit Sha",
+          "type": "string"
+        },
+        "git_blob_oid": {
+          "pattern": "^[0-9a-f]{40,64}$",
+          "title": "Git Blob Oid",
+          "type": "string"
+        },
+        "path": {
+          "title": "Path",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "blob_id",
+        "repository_id",
+        "commit_sha",
+        "path",
+        "uri",
+        "git_blob_oid",
+        "sha256",
+        "byte_count"
+      ],
+      "title": "ReleasedRepositoryBlobRef",
+      "type": "object"
+    },
+    "ReleasedRepositoryLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "blob_id": {
+          "pattern": "^repository-blob:[0-9a-f]{64}$",
+          "title": "Blob Id",
+          "type": "string"
+        },
+        "byte_end": {
+          "minimum": 1,
+          "title": "Byte End",
+          "type": "integer"
+        },
+        "byte_start": {
+          "minimum": 0,
+          "title": "Byte Start",
+          "type": "integer"
+        },
+        "line_end": {
+          "minimum": 1,
+          "title": "Line End",
+          "type": "integer"
+        },
+        "line_start": {
+          "minimum": 1,
+          "title": "Line Start",
+          "type": "integer"
+        },
+        "locator_id": {
+          "pattern": "^repository-locator:[0-9a-f]{64}$",
+          "title": "Locator Id",
+          "type": "string"
+        },
+        "locator_kind": {
+          "const": "line-byte",
+          "title": "Locator Kind",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "locator_id",
+        "blob_id",
+        "locator_kind",
+        "line_start",
+        "line_end",
+        "byte_start",
+        "byte_end"
+      ],
+      "title": "ReleasedRepositoryLocator",
+      "type": "object"
+    },
+    "ReleasedRepositoryObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "behavioral_proof": {
+          "const": false,
+          "title": "Behavioral Proof",
+          "type": "boolean"
+        },
+        "capability": {
+          "const": "exact-symbol-literal",
+          "title": "Capability",
+          "type": "string"
+        },
+        "configuration": {
+          "enum": [
+            "baseline",
+            "target"
+          ],
+          "title": "Configuration",
+          "type": "string"
+        },
+        "evidence_class": {
+          "const": "structural",
+          "title": "Evidence Class",
+          "type": "string"
+        },
+        "locator_id": {
+          "pattern": "^repository-locator:[0-9a-f]{64}$",
+          "title": "Locator Id",
+          "type": "string"
+        },
+        "normalized_type": {
+          "enum": [
+            "boolean",
+            "integer",
+            "string"
+          ],
+          "title": "Normalized Type",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "configuration",
+        "capability",
+        "normalized_type",
+        "value",
+        "locator_id",
+        "evidence_class",
+        "behavioral_proof"
+      ],
+      "title": "ReleasedRepositoryObservation",
+      "type": "object"
+    },
+    "ReleasedRepositoryStructuralCheck": {
+      "additionalProperties": false,
+      "properties": {
+        "baseline_observations": {
+          "items": {
+            "$ref": "#/$defs/ReleasedRepositoryObservation"
+          },
+          "title": "Baseline Observations",
+          "type": "array"
+        },
+        "behavioral_proof": {
+          "const": false,
+          "title": "Behavioral Proof",
+          "type": "boolean"
+        },
+        "disposition": {
+          "enum": [
+            "implemented",
+            "missing",
+            "contradicted",
+            "not_assessable"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "evidence_class": {
+          "const": "structural",
+          "title": "Evidence Class",
+          "type": "string"
+        },
+        "expected_from": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Expected From"
+        },
+        "expected_to": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Expected To"
+        },
+        "release_mode": {
+          "const": "plaintext-normalized-with-line-byte-provenance",
+          "title": "Release Mode",
+          "type": "string"
+        },
+        "release_status": {
+          "const": "released-by-repository-evidence-policy",
+          "title": "Release Status",
+          "type": "string"
+        },
+        "semantic_key": {
+          "title": "Semantic Key",
+          "type": "string"
+        },
+        "stale_references": {
+          "items": {
+            "$ref": "#/$defs/ReleasedRepositoryTextReference"
+          },
+          "title": "Stale References",
+          "type": "array"
+        },
+        "target_observations": {
+          "items": {
+            "$ref": "#/$defs/ReleasedRepositoryObservation"
+          },
+          "title": "Target Observations",
+          "type": "array"
+        }
+      },
+      "required": [
+        "semantic_key",
+        "expected_from",
+        "expected_to",
+        "baseline_observations",
+        "target_observations",
+        "stale_references",
+        "disposition",
+        "release_status",
+        "release_mode",
+        "evidence_class",
+        "behavioral_proof"
+      ],
+      "title": "ReleasedRepositoryStructuralCheck",
+      "type": "object"
+    },
+    "ReleasedRepositoryTextReference": {
+      "additionalProperties": false,
+      "properties": {
+        "behavioral_proof": {
+          "const": false,
+          "title": "Behavioral Proof",
+          "type": "boolean"
+        },
+        "capability": {
+          "const": "exact-text-reference",
+          "title": "Capability",
+          "type": "string"
+        },
+        "evidence_class": {
+          "const": "structural",
+          "title": "Evidence Class",
+          "type": "string"
+        },
+        "locator_id": {
+          "pattern": "^repository-locator:[0-9a-f]{64}$",
+          "title": "Locator Id",
+          "type": "string"
+        },
+        "referenced_value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Referenced Value"
+        }
+      },
+      "required": [
+        "capability",
+        "referenced_value",
+        "locator_id",
+        "evidence_class",
+        "behavioral_proof"
+      ],
+      "title": "ReleasedRepositoryTextReference",
+      "type": "object"
+    },
+    "RepositoryConsistencyAssessmentRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-structural-consistency-assessment",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "profile",
+        "access_policy"
+      ],
+      "title": "RepositoryConsistencyAssessmentRef",
+      "type": "object"
+    },
+    "RepositoryEvidenceProfileRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-evidence-profile",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "access_policy"
+      ],
+      "title": "RepositoryEvidenceProfileRef",
+      "type": "object"
+    },
+    "RepositoryEvidenceReleasePolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "repository-evidence-release-policy",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "recipient": {
+          "title": "Recipient",
+          "type": "string"
+        },
+        "repository_id": {
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "repository_profile": {
+          "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "repository_id",
+        "uri",
+        "sha256",
+        "access_policy",
+        "repository_profile",
+        "recipient"
+      ],
+      "title": "RepositoryEvidenceReleasePolicyRef",
+      "type": "object"
+    }
+  },
+  "$id": "https://kajohnson6.github.io/engineering-context-contracts/schemas/extensions/repository-structural-release/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "access_policy": {
+      "$ref": "#/$defs/ControlledAccessPolicyRef"
+    },
+    "artifact_type": {
+      "const": "repository-evidence-release-receipt",
+      "title": "Artifact Type",
+      "type": "string"
+    },
+    "baseline": {
+      "$ref": "#/$defs/GitRepositorySnapshotRef"
+    },
+    "behavioral_proof": {
+      "const": false,
+      "title": "Behavioral Proof",
+      "type": "boolean"
+    },
+    "content_contract": {
+      "const": "normalized-structural-checks-and-immutable-line-byte-references-only",
+      "title": "Content Contract",
+      "type": "string"
+    },
+    "evidence_blobs": {
+      "items": {
+        "$ref": "#/$defs/ReleasedRepositoryBlobRef"
+      },
+      "minItems": 1,
+      "title": "Evidence Blobs",
+      "type": "array"
+    },
+    "evidence_class": {
+      "const": "structural",
+      "title": "Evidence Class",
+      "type": "string"
+    },
+    "evidence_locators": {
+      "items": {
+        "$ref": "#/$defs/ReleasedRepositoryLocator"
+      },
+      "minItems": 1,
+      "title": "Evidence Locators",
+      "type": "array"
+    },
+    "no_raw_content": {
+      "const": true,
+      "title": "No Raw Content",
+      "type": "boolean"
+    },
+    "overall_result": {
+      "enum": [
+        "pass",
+        "fail"
+      ],
+      "title": "Overall Result",
+      "type": "string"
+    },
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "recipient": {
+      "const": "engineering-memory",
+      "title": "Recipient",
+      "type": "string"
+    },
+    "release_policy": {
+      "$ref": "#/$defs/RepositoryEvidenceReleasePolicyRef"
+    },
+    "released_checks": {
+      "items": {
+        "$ref": "#/$defs/ReleasedRepositoryStructuralCheck"
+      },
+      "minItems": 1,
+      "title": "Released Checks",
+      "type": "array"
+    },
+    "repository_id": {
+      "title": "Repository Id",
+      "type": "string"
+    },
+    "repository_profile": {
+      "$ref": "#/$defs/RepositoryEvidenceProfileRef"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_assessment": {
+      "$ref": "#/$defs/RepositoryConsistencyAssessmentRef"
+    },
+    "source_assessment_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Assessment Sha256",
+      "type": "string"
+    },
+    "target": {
+      "$ref": "#/$defs/GitRepositorySnapshotRef"
+    }
+  },
+  "required": [
+    "artifact_type",
+    "source_assessment",
+    "source_assessment_sha256",
+    "project_id",
+    "repository_id",
+    "baseline",
+    "target",
+    "access_policy",
+    "repository_profile",
+    "release_policy",
+    "recipient",
+    "evidence_blobs",
+    "evidence_locators",
+    "released_checks",
+    "overall_result",
+    "evidence_class",
+    "behavioral_proof",
+    "no_raw_content",
+    "content_contract"
+  ],
+  "title": "RepositoryEvidenceReleaseReceipt",
+  "type": "object"
+}

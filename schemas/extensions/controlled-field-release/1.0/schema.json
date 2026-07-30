@@ -1,0 +1,455 @@
+{
+  "$defs": {
+    "ControlledAccessPolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "uri",
+        "sha256"
+      ],
+      "title": "ControlledAccessPolicyRef",
+      "type": "object"
+    },
+    "ControlledConsistencyAssessmentRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "controlled-consistency-assessment",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "manifest": {
+          "$ref": "#/$defs/ControlledManifestRef"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "uri",
+        "sha256",
+        "manifest",
+        "access_policy"
+      ],
+      "title": "ControlledConsistencyAssessmentRef",
+      "type": "object"
+    },
+    "ControlledFieldReleasePolicyRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "const": "1.0",
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "controlled-field-release-policy",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "project_id": {
+          "title": "Project Id",
+          "type": "string"
+        },
+        "recipient": {
+          "title": "Recipient",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "project_id",
+        "uri",
+        "sha256",
+        "access_policy",
+        "recipient"
+      ],
+      "title": "ControlledFieldReleasePolicyRef",
+      "type": "object"
+    },
+    "ControlledManifestRef": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ControlledAccessPolicyRef"
+        },
+        "artifact_schema_version": {
+          "minLength": 1,
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "controlled-manifest",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "manifest_revision": {
+          "minimum": 1,
+          "title": "Manifest Revision",
+          "type": "integer"
+        },
+        "project_id": {
+          "minLength": 1,
+          "title": "Project Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "project_id",
+        "artifact_schema_version",
+        "uri",
+        "sha256",
+        "manifest_revision",
+        "access_policy"
+      ],
+      "title": "ControlledManifestRef",
+      "type": "object"
+    },
+    "ControlledReleasedEvidenceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_schema_version": {
+          "title": "Artifact Schema Version",
+          "type": "string"
+        },
+        "artifact_type": {
+          "const": "controlled-artifact",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "artifact_schema_version",
+        "uri",
+        "sha256"
+      ],
+      "title": "ControlledReleasedEvidenceRef",
+      "type": "object"
+    },
+    "ControlledReleasedFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "delta_id": {
+          "minLength": 1,
+          "title": "Delta Id",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "implemented",
+            "missing",
+            "contradicted",
+            "not_assessable"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "driver_from_observed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Driver From Observed"
+        },
+        "driver_to_observed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Driver To Observed"
+        },
+        "evidence_sha256": {
+          "items": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Sha256",
+          "type": "array"
+        },
+        "expected_from": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected From"
+        },
+        "expected_to": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected To"
+        },
+        "release_mode": {
+          "const": "plaintext-normalized",
+          "title": "Release Mode",
+          "type": "string"
+        },
+        "release_status": {
+          "const": "released-by-field-policy",
+          "title": "Release Status",
+          "type": "string"
+        },
+        "source_finding_id": {
+          "pattern": "^controlled-finding:[0-9a-f]{64}$",
+          "title": "Source Finding Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_finding_id",
+        "delta_id",
+        "expected_from",
+        "expected_to",
+        "driver_from_observed",
+        "driver_to_observed",
+        "disposition",
+        "evidence_sha256",
+        "release_mode",
+        "release_status"
+      ],
+      "title": "ControlledReleasedFinding",
+      "type": "object"
+    }
+  },
+  "$id": "https://kajohnson6.github.io/engineering-context-contracts/schemas/extensions/controlled-field-release/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "access_policy": {
+      "$ref": "#/$defs/ControlledAccessPolicyRef"
+    },
+    "artifact_type": {
+      "const": "controlled-field-release-receipt",
+      "title": "Artifact Type",
+      "type": "string"
+    },
+    "content_contract": {
+      "const": "normalized-findings-and-evidence-references-only",
+      "title": "Content Contract",
+      "type": "string"
+    },
+    "evidence_refs": {
+      "items": {
+        "$ref": "#/$defs/ControlledReleasedEvidenceRef"
+      },
+      "minItems": 1,
+      "title": "Evidence Refs",
+      "type": "array"
+    },
+    "from_configuration": {
+      "title": "From Configuration",
+      "type": "string"
+    },
+    "manifest": {
+      "$ref": "#/$defs/ControlledManifestRef"
+    },
+    "no_raw_content": {
+      "const": true,
+      "title": "No Raw Content",
+      "type": "boolean"
+    },
+    "overall_result": {
+      "enum": [
+        "pass",
+        "fail"
+      ],
+      "title": "Overall Result",
+      "type": "string"
+    },
+    "project_id": {
+      "title": "Project Id",
+      "type": "string"
+    },
+    "recipient": {
+      "const": "engineering-memory",
+      "title": "Recipient",
+      "type": "string"
+    },
+    "release_policy": {
+      "$ref": "#/$defs/ControlledFieldReleasePolicyRef"
+    },
+    "released_findings": {
+      "items": {
+        "$ref": "#/$defs/ControlledReleasedFinding"
+      },
+      "minItems": 1,
+      "title": "Released Findings",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_assessment": {
+      "$ref": "#/$defs/ControlledConsistencyAssessmentRef"
+    },
+    "source_assessment_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "title": "Source Assessment Sha256",
+      "type": "string"
+    },
+    "to_configuration": {
+      "title": "To Configuration",
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_type",
+    "source_assessment",
+    "source_assessment_sha256",
+    "manifest",
+    "project_id",
+    "from_configuration",
+    "to_configuration",
+    "access_policy",
+    "release_policy",
+    "recipient",
+    "evidence_refs",
+    "released_findings",
+    "overall_result",
+    "no_raw_content",
+    "content_contract"
+  ],
+  "title": "ControlledFieldReleaseReceipt",
+  "type": "object"
+}
