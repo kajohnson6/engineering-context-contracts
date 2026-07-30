@@ -11,6 +11,11 @@
       "sha256": "c4ed4b7d19cf2ce84cf47879ac47ef810624bd683dafaba1a86fe5af81c00369"
     },
     {
+      "byte_count": 19433,
+      "path": "fixtures/evidence-interpretation-ams-pps-50-ohm-v1.json",
+      "sha256": "479c06b7ca86df3e4b7e884732e9939ce9f5f4465f873049de8130996455a0ae"
+    },
+    {
       "byte_count": 20863,
       "path": "fixtures/repository-structural-release-failure.json",
       "sha256": "751ea29fa77f118a3c3eec2d02cb343343ee7aadbee85e8b72ced5ab5f5ed326"
@@ -19,6 +24,11 @@
       "byte_count": 19203,
       "path": "fixtures/repository-verification-release-failure.json",
       "sha256": "d516b39bf1d62df8ed8bbf6cca1249c6b707f462ac0575f3bfd7a4fde586b3e7"
+    },
+    {
+      "byte_count": 17560,
+      "path": "schemas/evidence-interpretation/1.0/schema.json",
+      "sha256": "997f6f0a7639837353866f534366e9ddda88b48781beb33848fb2c55cfbbcbd5"
     },
     {
       "byte_count": 36438,
@@ -44,5 +54,5 @@
   "canonicalization_profile": "engineering-context-jcs-1.0",
   "core_contract_version": "1.0",
   "manifest_version": "1.0",
-  "package_version": "0.1.0"
+  "package_version": "0.2.0"
 }

@@ -28,6 +28,14 @@ Provider extensions currently cover:
 - exact-Git structural evidence release;
 - commit-bound verified-execution release.
 
+The core package also publishes the provider-neutral
+`EvidenceInterpretationReceipt` wire contract. It separates normative,
+derived, plausible, and recommendation assertions while structurally
+prohibiting non-normative assertions from satisfying compliance obligations.
+Its reviewed AMS/OMS 1 PPS fixture preserves the hard
+`project-evidence-required` state alongside a provenance-linked plausible
+interpretation and design-safe recommendation.
+
 Raw controlled content, source snippets, commands, logs, credentials, and
 project-specific data are prohibited from the included fixtures.
 
@@ -35,7 +43,7 @@ project-specific data are prohibited from the included fixtures.
 
 Package version and wire `schema_version` are independent:
 
-- package `0.1.0` is the first implementation binding;
+- package `0.2.0` adds the evidence-interpretation wire contract;
 - wire contract `1.0` rejects unknown versions;
 - compatible additions require a new explicitly supported schema version;
 - consumers must fail closed on unknown required semantics.

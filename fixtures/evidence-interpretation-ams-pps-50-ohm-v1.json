@@ -1,0 +1,429 @@
+{
+  "schema_version": "1.0",
+  "receipt_id": "ams-oms-pps-50-ohm-interpretation-v1",
+  "question": "Given the pinned AMS-GRA, OMS, and UCI public evidence, must an MFA 1 PPS receiver present a 50-ohm termination, and must the platform source drive 5-12 V into that termination?",
+  "source_admission_ref": {
+    "artifact_type": "staged-dependency-admission",
+    "uri": "component-lens://ams-gra-pps-chain/results/S2/authority-correction-v2/admission.json",
+    "sha256": "9ceb19408ec5bbf9134be2fd87b07d8d85338a1296067fa000f831d473c8303f",
+    "artifact_schema_version": "1.1"
+  },
+  "effective_manifest_ref": {
+    "artifact_type": "dependency-manifest",
+    "uri": "component-lens://ams-gra-pps-chain/effective-dependency-manifest-v2",
+    "sha256": "e47341707933e5500f0c973fff577ec6e74e6c2ea6403447e5f30df5def882d6",
+    "artifact_schema_version": "1.1"
+  },
+  "correction_ref": {
+    "artifact_type": "dependency-correction",
+    "uri": "component-lens://ams-gra-pps-chain/dependency-authority-correction-v2.json",
+    "sha256": "eb3f70eb34c2b58e78cf44212bae7e9cac201ab808d4ad15f3c44cc7c6b61d83",
+    "artifact_schema_version": "1.0"
+  },
+  "hard_terminal_state": "project-evidence-required",
+  "evidence_catalog": [
+    {
+      "evidence_id": "oms-related-standards-page-32",
+      "authority_artifact_ref": {
+        "artifact_type": "standards-source",
+        "uri": "https://gitlab.com/open-arsenal/oms/standard/-/blob/59e85c041ace9003a8ada9d8f7390dd9b26615e5/docs_official/02_OMSC-STD-001_RevM_OMS_Standard_DandD_v2_5.docx",
+        "sha256": "976b3f1acd757b3f68a5cc84101ffc177a864e616cd678f6e9f5800582d6d3ed",
+        "artifact_schema_version": null
+      },
+      "locator_artifact_ref": {
+        "artifact_type": "evidence-page",
+        "uri": "component-lens://ams-gra-pps-chain/oms-standard-revm-v2-5-rendered/page/32",
+        "sha256": "8cbf8dd4d2a1a4b6d59cc9afb3003cecd1cd525d5150c830e796f3512fc9a7f7",
+        "artifact_schema_version": "1.0"
+      },
+      "clause": "OMS 2.5 section 5.1, Table 5.1-1",
+      "locator": "rendered page 32; printed page 18",
+      "authority_scope": [
+        "related-standard classification",
+        "OMS compliance applicability"
+      ]
+    },
+    {
+      "evidence_id": "oms-time-reference-table-page-115",
+      "authority_artifact_ref": {
+        "artifact_type": "standards-source",
+        "uri": "https://gitlab.com/open-arsenal/oms/standard/-/blob/59e85c041ace9003a8ada9d8f7390dd9b26615e5/docs_official/02_OMSC-STD-001_RevM_OMS_Standard_DandD_v2_5.docx",
+        "sha256": "976b3f1acd757b3f68a5cc84101ffc177a864e616cd678f6e9f5800582d6d3ed",
+        "artifact_schema_version": null
+      },
+      "locator_artifact_ref": {
+        "artifact_type": "evidence-page",
+        "uri": "component-lens://ams-gra-pps-chain/oms-standard-revm-v2-5-rendered/page/115",
+        "sha256": "ffbec719d090890e7d86a537c05e85710005e54fe460b1c62a9180a8413fe214",
+        "artifact_schema_version": "1.0"
+      },
+      "clause": "OMS 2.5 section 6.3.3.2, Table 6.3-10",
+      "locator": "rendered page 115; printed page 101",
+      "authority_scope": [
+        "1 PPS direction",
+        "general-use signal-definition alternatives",
+        "SystemTimeAtReference relationship"
+      ]
+    },
+    {
+      "evidence_id": "oms-pps-project-documentation-page-140",
+      "authority_artifact_ref": {
+        "artifact_type": "standards-source",
+        "uri": "https://gitlab.com/open-arsenal/oms/standard/-/blob/59e85c041ace9003a8ada9d8f7390dd9b26615e5/docs_official/02_OMSC-STD-001_RevM_OMS_Standard_DandD_v2_5.docx",
+        "sha256": "976b3f1acd757b3f68a5cc84101ffc177a864e616cd678f6e9f5800582d6d3ed",
+        "artifact_schema_version": null
+      },
+      "locator_artifact_ref": {
+        "artifact_type": "evidence-page",
+        "uri": "component-lens://ams-gra-pps-chain/oms-standard-revm-v2-5-rendered/page/140",
+        "sha256": "9d34f85e0ace5863da2276ffcdec7a83873a58f8bf7071edbe3b6a1055c243b8",
+        "artifact_schema_version": "1.0"
+      },
+      "clause": "OMS 2.5 section 6.5.5.2, 1 PPS protocol requirements",
+      "locator": "rendered page 140; printed page 126",
+      "authority_scope": [
+        "Platform PDD documentation duty",
+        "Subsystem SDD documentation duty",
+        "implemented 1 PPS performance"
+      ]
+    }
+  ],
+  "assertions": [
+    {
+      "assertion_id": "hard-public-standard-answer",
+      "mode": "normative",
+      "statement": "The pinned public standards do not establish an unconditional MFA 50-ohm receiver termination or a universal requirement for the platform to drive 5-12 V into such a termination. OMS requires the implemented and expected 1 PPS performance to be established in the project Platform PDD and Subsystem SDD.",
+      "normalized_assertion": "mfa.pps.electrical_requirement=project-evidence-required",
+      "evidence_ids": [
+        "oms-related-standards-page-32",
+        "oms-time-reference-table-page-115",
+        "oms-pps-project-documentation-page-140"
+      ],
+      "edge_path": [
+        {
+          "edge_id": "oms-2-5-informatively-references-icd-gps-060b",
+          "source_artifact_id": "oms-standard-revm-v2-5-docx",
+          "target_artifact_id": "icd-gps-060b",
+          "semantics": "informative-reference",
+          "authority_effect": "informative-only",
+          "lifecycle_state": "active",
+          "scope": [
+            "available 1 PPS signal-definition option",
+            "PTTI implementation reference when selected by project documentation"
+          ]
+        }
+      ],
+      "authority_scope": [
+        "public-baseline compliance",
+        "project evidence required for implemented electrical characteristics"
+      ],
+      "authority_effect": "scoped-authoritative",
+      "assumptions": [],
+      "ambiguities_and_counterevidence": [
+        {
+          "ambiguity_id": "table-cell-electrical-grouping",
+          "statement": "Table 6.3-10 groups 50 ohm and +5 to +12 V with one signal-definition alternative, but does not allocate separate source and receiver envelopes.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115"
+          ],
+          "impact": "The table cannot alone prove receiver termination or source-load compliance."
+        }
+      ],
+      "confidence_level": "high",
+      "confidence_basis": [
+        {
+          "kind": "direct-clause",
+          "statement": "OMS directly assigns implemented and expected performance documentation to the Platform PDD and Subsystem SDD.",
+          "evidence_ids": [
+            "oms-pps-project-documentation-page-140"
+          ],
+          "effect": "supports"
+        },
+        {
+          "kind": "direct-clause",
+          "statement": "OMS expressly says its related-standards table is not used for OMS compliance.",
+          "evidence_ids": [
+            "oms-related-standards-page-32"
+          ],
+          "effect": "supports"
+        }
+      ],
+      "alternatives_considered": [
+        {
+          "alternative_id": "gps-icd-universal",
+          "statement": "ICD-GPS-060B electrical envelopes apply universally to every OMS 1 PPS interface.",
+          "disposition": "less-plausible",
+          "rationale": "The OMS reference is informative and Table 6.3-10 lists multiple alternatives.",
+          "evidence_ids": [
+            "oms-related-standards-page-32",
+            "oms-time-reference-table-page-115"
+          ]
+        }
+      ],
+      "engineering_consequence_if_wrong": "A design could be electrically incompatible, overstress an input, or fail timing integrity despite appearing standards-compliant.",
+      "closure_actions": [
+        {
+          "action_id": "obtain-project-interface-documents",
+          "action": "Obtain and review the applicable Platform PDD, Subsystem SDD, and project interface-control evidence.",
+          "required_artifact_kinds": [
+            "platform-pdd",
+            "subsystem-sdd"
+          ],
+          "completion_criterion": "Project evidence explicitly binds source drive, receiver load, voltage, medium, connector, and timing."
+        }
+      ],
+      "applicability": {
+        "project_baseline": "AMS GRA v14/v2026.01 starter-kit baseline",
+        "configuration": "MFA platform-to-subsystem 1 PPS interface; project PDD/SDD unavailable",
+        "standard_versions": [
+          "AMS GRA v14",
+          "OMS 2.5 Revision M commit 59e85c041ace9003a8ada9d8f7390dd9b26615e5",
+          "UCI 2.5 commit 73a286fc4b881d9f328dbd64148525606a92c33a"
+        ],
+        "access_policy": "public-evidence"
+      },
+      "maturity": "evidence-reviewed",
+      "review_state": "requires-project-evidence",
+      "normative_coverage_allowed": false,
+      "eligible_obligation_ids": [],
+      "authority_promotion_prohibited": true
+    },
+    {
+      "assertion_id": "plausible-50-ohm-reading",
+      "mode": "plausible",
+      "statement": "The most plausible reading is that 50 ohm and +5 to +12 V describe the twisted-shielded-pair signal implementation listed in Table 6.3-10, rather than imposing an unconditional 50-ohm MFA input termination and a universal platform drive requirement.",
+      "normalized_assertion": "mfa.pps.50ohm_interpretation=signal-option-not-unconditional-termination",
+      "evidence_ids": [
+        "oms-related-standards-page-32",
+        "oms-time-reference-table-page-115",
+        "oms-pps-project-documentation-page-140"
+      ],
+      "edge_path": [
+        {
+          "edge_id": "oms-2-5-informatively-references-icd-gps-060b",
+          "source_artifact_id": "oms-standard-revm-v2-5-docx",
+          "target_artifact_id": "icd-gps-060b",
+          "semantics": "informative-reference",
+          "authority_effect": "informative-only",
+          "lifecycle_state": "active",
+          "scope": [
+            "available 1 PPS signal-definition option"
+          ]
+        }
+      ],
+      "authority_scope": [
+        "engineering interpretation only",
+        "not compliance evidence"
+      ],
+      "authority_effect": "informative-only",
+      "assumptions": [
+        {
+          "assumption_id": "table-alternative-grouping",
+          "statement": "The punctuation and row layout group impedance and voltage with the twisted-shielded-pair alternative.",
+          "state": "unverified",
+          "consequence_if_false": "The values might instead describe a broader interface constraint."
+        },
+        {
+          "assumption_id": "no-project-selection",
+          "statement": "No unavailable PDD/SDD selects the ICD-GPS/PTTI option or a 50-ohm termination.",
+          "state": "explicit",
+          "consequence_if_false": "The selected project requirement could bind the GPS or another electrical envelope."
+        }
+      ],
+      "ambiguities_and_counterevidence": [
+        {
+          "ambiguity_id": "receiver-load-unspecified",
+          "statement": "The table does not separately identify cable impedance, source impedance, or receiver termination.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115"
+          ],
+          "impact": "The engineering role of 50 ohm remains ambiguous."
+        },
+        {
+          "ambiguity_id": "gps-option-has-detailed-envelopes",
+          "statement": "A project may select the listed ICD-GPS-060B option, which could impose more specific electrical behavior.",
+          "evidence_ids": [
+            "oms-related-standards-page-32",
+            "oms-time-reference-table-page-115"
+          ],
+          "impact": "The plausible reading is configuration-dependent."
+        }
+      ],
+      "confidence_level": "moderate",
+      "confidence_basis": [
+        {
+          "kind": "table-structure",
+          "statement": "Impedance and voltage appear within one of several alternative signal-definition entries.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115"
+          ],
+          "effect": "supports"
+        },
+        {
+          "kind": "cross-clause-consistency",
+          "statement": "Deferring implemented performance to PDD/SDD is consistent with the table describing choices rather than a universal receiver circuit.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115",
+            "oms-pps-project-documentation-page-140"
+          ],
+          "effect": "supports"
+        },
+        {
+          "kind": "absence-of-binding-selection",
+          "statement": "No admitted project artifact selects the GPS/PTTI alternative.",
+          "evidence_ids": [
+            "oms-related-standards-page-32"
+          ],
+          "effect": "limits"
+        }
+      ],
+      "alternatives_considered": [
+        {
+          "alternative_id": "unconditional-receiver-termination",
+          "statement": "Every MFA receiver must present exactly 50 ohms.",
+          "disposition": "less-plausible",
+          "rationale": "OMS gives alternatives and omits a distinct receiver-load specification.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115"
+          ]
+        },
+        {
+          "alternative_id": "gps-ptti-selected",
+          "statement": "The project selects the ICD-GPS/PTTI implementation and its scoped envelopes.",
+          "disposition": "conditionally-applicable",
+          "rationale": "This becomes applicable only through project PDD/SDD selection.",
+          "evidence_ids": [
+            "oms-related-standards-page-32",
+            "oms-pps-project-documentation-page-140"
+          ]
+        },
+        {
+          "alternative_id": "differential-option",
+          "statement": "The project uses the differential-pair option, such as RS-485.",
+          "disposition": "open",
+          "rationale": "Table 6.3-10 lists it as another option and public evidence does not select among them.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115"
+          ]
+        }
+      ],
+      "engineering_consequence_if_wrong": "Treating a line-impedance note as a mandatory shunt termination could halve signal amplitude or overload the driver; omitting a required termination could create reflections or invalid thresholds.",
+      "closure_actions": [
+        {
+          "action_id": "resolve-electrical-topology",
+          "action": "Review project interface documents and, if necessary, verify source impedance, cable impedance, receiver input impedance, and voltage at the actual load.",
+          "required_artifact_kinds": [
+            "platform-pdd",
+            "subsystem-sdd",
+            "interface-control-document"
+          ],
+          "completion_criterion": "The selected medium and source/load topology are explicitly documented or verified."
+        }
+      ],
+      "applicability": {
+        "project_baseline": "AMS GRA v14/v2026.01 starter-kit baseline",
+        "configuration": "MFA platform-to-subsystem 1 PPS interface; project PDD/SDD unavailable",
+        "standard_versions": [
+          "OMS 2.5 Revision M commit 59e85c041ace9003a8ada9d8f7390dd9b26615e5"
+        ],
+        "access_policy": "public-evidence"
+      },
+      "maturity": "evidence-reviewed",
+      "review_state": "requires-project-evidence",
+      "normative_coverage_allowed": false,
+      "eligible_obligation_ids": [],
+      "authority_promotion_prohibited": true
+    },
+    {
+      "assertion_id": "design-safe-recommendation",
+      "mode": "recommendation",
+      "statement": "Do not commit to a fixed 50-ohm termination or a 5-12 V driver solely from the public standards. Hold the electrical design open or make the input safely configurable and protected until the project PDD/SDD and interface-control evidence establish the selected topology.",
+      "normalized_assertion": "mfa.pps.design_action=defer-or-configure-until-project-evidence",
+      "evidence_ids": [
+        "oms-time-reference-table-page-115",
+        "oms-pps-project-documentation-page-140"
+      ],
+      "edge_path": [],
+      "authority_scope": [
+        "design-risk mitigation",
+        "not compliance evidence"
+      ],
+      "authority_effect": "informative-only",
+      "assumptions": [
+        {
+          "assumption_id": "design-not-frozen",
+          "statement": "The receiver topology can still be changed or configured.",
+          "state": "unverified",
+          "consequence_if_false": "The team must perform an immediate project-evidence review and electrical compatibility analysis."
+        }
+      ],
+      "ambiguities_and_counterevidence": [
+        {
+          "ambiguity_id": "unknown-project-interface",
+          "statement": "The selected physical medium, connector, source drive, and receiver load are not present in admitted public evidence.",
+          "evidence_ids": [
+            "oms-pps-project-documentation-page-140"
+          ],
+          "impact": "A fixed implementation carries avoidable compatibility and overstress risk."
+        }
+      ],
+      "confidence_level": "high",
+      "confidence_basis": [
+        {
+          "kind": "engineering-principle",
+          "statement": "Avoid irreversible electrical assumptions when source/load requirements and voltage limits are unresolved.",
+          "evidence_ids": [],
+          "effect": "supports"
+        },
+        {
+          "kind": "direct-clause",
+          "statement": "OMS assigns implemented and expected performance documentation to project PDD/SDD artifacts.",
+          "evidence_ids": [
+            "oms-pps-project-documentation-page-140"
+          ],
+          "effect": "supports"
+        }
+      ],
+      "alternatives_considered": [
+        {
+          "alternative_id": "implement-50-ohm-now",
+          "statement": "Implement a permanent 50-ohm shunt and 5-12 V source assumption immediately.",
+          "disposition": "less-plausible",
+          "rationale": "The admitted public evidence does not establish that topology.",
+          "evidence_ids": [
+            "oms-time-reference-table-page-115",
+            "oms-pps-project-documentation-page-140"
+          ]
+        }
+      ],
+      "engineering_consequence_if_wrong": "A premature fixed circuit may require rework or damage hardware when the actual project interface differs.",
+      "closure_actions": [
+        {
+          "action_id": "design-review-gate",
+          "action": "Block electrical-interface signoff until the selected project interface is documented and checked against component absolute maximums and signal-integrity constraints.",
+          "required_artifact_kinds": [
+            "platform-pdd",
+            "subsystem-sdd",
+            "electrical-design-review"
+          ],
+          "completion_criterion": "Design review records the selected topology, analysis, and verification evidence."
+        }
+      ],
+      "applicability": {
+        "project_baseline": "AMS GRA v14/v2026.01 starter-kit baseline",
+        "configuration": "MFA receiver design before project electrical selection is available",
+        "standard_versions": [
+          "OMS 2.5 Revision M commit 59e85c041ace9003a8ada9d8f7390dd9b26615e5"
+        ],
+        "access_policy": "public-evidence"
+      },
+      "maturity": "engineering-reviewed",
+      "review_state": "requires-project-evidence",
+      "normative_coverage_allowed": false,
+      "eligible_obligation_ids": [],
+      "authority_promotion_prohibited": true
+    }
+  ],
+  "lifecycle_events": [],
+  "content_contract": "normalized-assertions-and-provenance-only;no-raw-content;no-hidden-controller-frontier"
+}

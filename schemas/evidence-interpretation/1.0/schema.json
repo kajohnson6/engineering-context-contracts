@@ -1,0 +1,717 @@
+{
+  "$defs": {
+    "ApplicabilityContext": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "minLength": 1,
+          "title": "Access Policy",
+          "type": "string"
+        },
+        "configuration": {
+          "minLength": 1,
+          "title": "Configuration",
+          "type": "string"
+        },
+        "project_baseline": {
+          "minLength": 1,
+          "title": "Project Baseline",
+          "type": "string"
+        },
+        "standard_versions": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Standard Versions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "project_baseline",
+        "configuration",
+        "standard_versions",
+        "access_policy"
+      ],
+      "title": "ApplicabilityContext",
+      "type": "object"
+    },
+    "AssertionMode": {
+      "enum": [
+        "normative",
+        "derived",
+        "plausible",
+        "recommendation"
+      ],
+      "title": "AssertionMode",
+      "type": "string"
+    },
+    "AuthorityEffect": {
+      "enum": [
+        "scoped-authoritative",
+        "applicability-binding",
+        "informative-only"
+      ],
+      "title": "AuthorityEffect",
+      "type": "string"
+    },
+    "ClosureAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "minLength": 1,
+          "title": "Action",
+          "type": "string"
+        },
+        "action_id": {
+          "minLength": 1,
+          "title": "Action Id",
+          "type": "string"
+        },
+        "completion_criterion": {
+          "minLength": 1,
+          "title": "Completion Criterion",
+          "type": "string"
+        },
+        "required_artifact_kinds": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Required Artifact Kinds",
+          "type": "array"
+        }
+      },
+      "required": [
+        "action_id",
+        "action",
+        "completion_criterion"
+      ],
+      "title": "ClosureAction",
+      "type": "object"
+    },
+    "ConfidenceBasis": {
+      "additionalProperties": false,
+      "properties": {
+        "effect": {
+          "enum": [
+            "supports",
+            "limits"
+          ],
+          "title": "Effect",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "kind": {
+          "$ref": "#/$defs/ConfidenceBasisKind"
+        },
+        "statement": {
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "statement",
+        "effect"
+      ],
+      "title": "ConfidenceBasis",
+      "type": "object"
+    },
+    "ConfidenceBasisKind": {
+      "enum": [
+        "direct-clause",
+        "table-structure",
+        "cross-clause-consistency",
+        "engineering-principle",
+        "absence-of-binding-selection",
+        "verified-experiment"
+      ],
+      "title": "ConfidenceBasisKind",
+      "type": "string"
+    },
+    "DependencySemantics": {
+      "enum": [
+        "normative-delegation",
+        "project-selection",
+        "schema-dependency",
+        "incorporation-by-reference",
+        "informative-reference"
+      ],
+      "title": "DependencySemantics",
+      "type": "string"
+    },
+    "EvidenceInterpretationAssertion": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives_considered": {
+          "items": {
+            "$ref": "#/$defs/InterpretationAlternative"
+          },
+          "minItems": 1,
+          "title": "Alternatives Considered",
+          "type": "array"
+        },
+        "ambiguities_and_counterevidence": {
+          "items": {
+            "$ref": "#/$defs/InterpretationAmbiguity"
+          },
+          "title": "Ambiguities And Counterevidence",
+          "type": "array"
+        },
+        "applicability": {
+          "$ref": "#/$defs/ApplicabilityContext"
+        },
+        "assertion_id": {
+          "minLength": 1,
+          "title": "Assertion Id",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "$ref": "#/$defs/InterpretationAssumption"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "authority_effect": {
+          "$ref": "#/$defs/AuthorityEffect"
+        },
+        "authority_promotion_prohibited": {
+          "default": true,
+          "title": "Authority Promotion Prohibited",
+          "type": "boolean"
+        },
+        "authority_scope": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Authority Scope",
+          "type": "array"
+        },
+        "closure_actions": {
+          "items": {
+            "$ref": "#/$defs/ClosureAction"
+          },
+          "minItems": 1,
+          "title": "Closure Actions",
+          "type": "array"
+        },
+        "confidence_basis": {
+          "items": {
+            "$ref": "#/$defs/ConfidenceBasis"
+          },
+          "minItems": 1,
+          "title": "Confidence Basis",
+          "type": "array"
+        },
+        "confidence_level": {
+          "enum": [
+            "low",
+            "moderate",
+            "high"
+          ],
+          "title": "Confidence Level",
+          "type": "string"
+        },
+        "edge_path": {
+          "items": {
+            "$ref": "#/$defs/InterpretationEdgeStep"
+          },
+          "title": "Edge Path",
+          "type": "array"
+        },
+        "eligible_obligation_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Eligible Obligation Ids",
+          "type": "array"
+        },
+        "engineering_consequence_if_wrong": {
+          "minLength": 1,
+          "title": "Engineering Consequence If Wrong",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "maturity": {
+          "$ref": "#/$defs/InterpretationMaturity"
+        },
+        "mode": {
+          "$ref": "#/$defs/AssertionMode"
+        },
+        "normalized_assertion": {
+          "minLength": 1,
+          "title": "Normalized Assertion",
+          "type": "string"
+        },
+        "normative_coverage_allowed": {
+          "default": false,
+          "title": "Normative Coverage Allowed",
+          "type": "boolean"
+        },
+        "review_state": {
+          "$ref": "#/$defs/ReviewState"
+        },
+        "statement": {
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assertion_id",
+        "mode",
+        "statement",
+        "normalized_assertion",
+        "evidence_ids",
+        "authority_scope",
+        "authority_effect",
+        "confidence_level",
+        "confidence_basis",
+        "alternatives_considered",
+        "engineering_consequence_if_wrong",
+        "closure_actions",
+        "applicability",
+        "maturity",
+        "review_state"
+      ],
+      "title": "EvidenceInterpretationAssertion",
+      "type": "object"
+    },
+    "InterpretationAlternative": {
+      "additionalProperties": false,
+      "properties": {
+        "alternative_id": {
+          "minLength": 1,
+          "title": "Alternative Id",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "open",
+            "less-plausible",
+            "conditionally-applicable"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "rationale": {
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "alternative_id",
+        "statement",
+        "disposition",
+        "rationale"
+      ],
+      "title": "InterpretationAlternative",
+      "type": "object"
+    },
+    "InterpretationAmbiguity": {
+      "additionalProperties": false,
+      "properties": {
+        "ambiguity_id": {
+          "minLength": 1,
+          "title": "Ambiguity Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "impact": {
+          "minLength": 1,
+          "title": "Impact",
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "ambiguity_id",
+        "statement",
+        "evidence_ids",
+        "impact"
+      ],
+      "title": "InterpretationAmbiguity",
+      "type": "object"
+    },
+    "InterpretationArtifactRef": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact_schema_version": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Schema Version"
+        },
+        "artifact_type": {
+          "enum": [
+            "standards-source",
+            "derived-retrieval-aid",
+            "evidence-page",
+            "staged-dependency-admission",
+            "dependency-manifest",
+            "dependency-correction",
+            "interpretation-receipt"
+          ],
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "uri",
+        "sha256"
+      ],
+      "title": "InterpretationArtifactRef",
+      "type": "object"
+    },
+    "InterpretationAssumption": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_id": {
+          "minLength": 1,
+          "title": "Assumption Id",
+          "type": "string"
+        },
+        "consequence_if_false": {
+          "minLength": 1,
+          "title": "Consequence If False",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "explicit",
+            "verified",
+            "unverified"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "statement": {
+          "minLength": 1,
+          "title": "Statement",
+          "type": "string"
+        }
+      },
+      "required": [
+        "assumption_id",
+        "statement",
+        "state",
+        "consequence_if_false"
+      ],
+      "title": "InterpretationAssumption",
+      "type": "object"
+    },
+    "InterpretationEdgeStep": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_effect": {
+          "$ref": "#/$defs/AuthorityEffect"
+        },
+        "edge_id": {
+          "minLength": 1,
+          "title": "Edge Id",
+          "type": "string"
+        },
+        "lifecycle_state": {
+          "$ref": "#/$defs/InterpretationLifecycleState",
+          "default": "active"
+        },
+        "scope": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Scope",
+          "type": "array"
+        },
+        "semantics": {
+          "$ref": "#/$defs/DependencySemantics"
+        },
+        "source_artifact_id": {
+          "minLength": 1,
+          "title": "Source Artifact Id",
+          "type": "string"
+        },
+        "target_artifact_id": {
+          "minLength": 1,
+          "title": "Target Artifact Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "edge_id",
+        "source_artifact_id",
+        "target_artifact_id",
+        "semantics",
+        "authority_effect",
+        "scope"
+      ],
+      "title": "InterpretationEdgeStep",
+      "type": "object"
+    },
+    "InterpretationEvidenceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_artifact_ref": {
+          "$ref": "#/$defs/InterpretationArtifactRef"
+        },
+        "authority_scope": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Authority Scope",
+          "type": "array"
+        },
+        "clause": {
+          "minLength": 1,
+          "title": "Clause",
+          "type": "string"
+        },
+        "evidence_id": {
+          "minLength": 1,
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "locator": {
+          "minLength": 1,
+          "title": "Locator",
+          "type": "string"
+        },
+        "locator_artifact_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InterpretationArtifactRef"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "evidence_id",
+        "authority_artifact_ref",
+        "clause",
+        "locator",
+        "authority_scope"
+      ],
+      "title": "InterpretationEvidenceRef",
+      "type": "object"
+    },
+    "InterpretationLifecycleEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "assertion_id": {
+          "minLength": 1,
+          "title": "Assertion Id",
+          "type": "string"
+        },
+        "event_id": {
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "replacements": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Replacements",
+          "type": "array"
+        },
+        "state": {
+          "$ref": "#/$defs/InterpretationLifecycleState"
+        }
+      },
+      "required": [
+        "event_id",
+        "assertion_id",
+        "state",
+        "reason",
+        "evidence_ids"
+      ],
+      "title": "InterpretationLifecycleEvent",
+      "type": "object"
+    },
+    "InterpretationLifecycleState": {
+      "enum": [
+        "active",
+        "superseded",
+        "quarantined"
+      ],
+      "title": "InterpretationLifecycleState",
+      "type": "string"
+    },
+    "InterpretationMaturity": {
+      "enum": [
+        "draft",
+        "evidence-reviewed",
+        "engineering-reviewed",
+        "superseded",
+        "quarantined"
+      ],
+      "title": "InterpretationMaturity",
+      "type": "string"
+    },
+    "ReviewState": {
+      "enum": [
+        "unreviewed",
+        "accepted",
+        "challenged",
+        "requires-project-evidence"
+      ],
+      "title": "ReviewState",
+      "type": "string"
+    }
+  },
+  "$id": "https://engineering-context-contracts.invalid/schemas/evidence-interpretation/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "assertions": {
+      "items": {
+        "$ref": "#/$defs/EvidenceInterpretationAssertion"
+      },
+      "minItems": 1,
+      "title": "Assertions",
+      "type": "array"
+    },
+    "content_contract": {
+      "const": "normalized-assertions-and-provenance-only;no-raw-content;no-hidden-controller-frontier",
+      "default": "normalized-assertions-and-provenance-only;no-raw-content;no-hidden-controller-frontier",
+      "title": "Content Contract",
+      "type": "string"
+    },
+    "correction_ref": {
+      "$ref": "#/$defs/InterpretationArtifactRef"
+    },
+    "effective_manifest_ref": {
+      "$ref": "#/$defs/InterpretationArtifactRef"
+    },
+    "evidence_catalog": {
+      "items": {
+        "$ref": "#/$defs/InterpretationEvidenceRef"
+      },
+      "minItems": 1,
+      "title": "Evidence Catalog",
+      "type": "array"
+    },
+    "hard_terminal_state": {
+      "enum": [
+        "ready",
+        "unsatisfied",
+        "project-evidence-required"
+      ],
+      "title": "Hard Terminal State",
+      "type": "string"
+    },
+    "lifecycle_events": {
+      "items": {
+        "$ref": "#/$defs/InterpretationLifecycleEvent"
+      },
+      "title": "Lifecycle Events",
+      "type": "array"
+    },
+    "question": {
+      "minLength": 1,
+      "title": "Question",
+      "type": "string"
+    },
+    "receipt_id": {
+      "minLength": 1,
+      "title": "Receipt Id",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "source_admission_ref": {
+      "$ref": "#/$defs/InterpretationArtifactRef"
+    }
+  },
+  "required": [
+    "receipt_id",
+    "question",
+    "source_admission_ref",
+    "effective_manifest_ref",
+    "correction_ref",
+    "hard_terminal_state",
+    "evidence_catalog",
+    "assertions"
+  ],
+  "title": "EvidenceInterpretationReceipt",
+  "type": "object"
+}

@@ -35,12 +35,41 @@ from engineering_context_contracts.core import (
     canonical_sha256,
     evaluate_applicability,
 )
+from engineering_context_contracts.interpretation import (
+    ApplicabilityContext as InterpretationApplicabilityContext,
+)
+from engineering_context_contracts.interpretation import (
+    AssertionMode,
+    ClosureAction,
+    ConfidenceBasis,
+    ConfidenceBasisKind,
+    EvidenceInterpretationAssertion,
+    EvidenceInterpretationReceipt,
+    InterpretationAlternative,
+    InterpretationAmbiguity,
+    InterpretationArtifactRef,
+    InterpretationAssumption,
+    InterpretationEdgeStep,
+    InterpretationEvidenceRef,
+    InterpretationLifecycleEvent,
+    InterpretationLifecycleState,
+    InterpretationMaturity,
+)
+from engineering_context_contracts.interpretation import (
+    AuthorityEffect as InterpretationAuthorityEffect,
+)
+from engineering_context_contracts.interpretation import (
+    DependencySemantics as InterpretationDependencySemantics,
+)
+from engineering_context_contracts.interpretation import (
+    ReviewState as InterpretationReviewState,
+)
 from engineering_context_contracts.resources import (
     contract_manifest,
     verify_packaged_contracts,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "ApplicabilityDecision",
@@ -54,10 +83,25 @@ __all__ = [
     "DispositionStatus",
     "EligibilityExplanation",
     "EvidenceDeliveryReceipt",
+    "EvidenceInterpretationAssertion",
+    "EvidenceInterpretationReceipt",
     "EvidenceOutcomeReceipt",
     "EvidenceResolverReceipt",
     "FeedbackEvent",
     "FeedbackReasonCode",
+    "InterpretationAlternative",
+    "InterpretationAmbiguity",
+    "InterpretationApplicabilityContext",
+    "InterpretationArtifactRef",
+    "InterpretationAssumption",
+    "InterpretationAuthorityEffect",
+    "InterpretationDependencySemantics",
+    "InterpretationEdgeStep",
+    "InterpretationEvidenceRef",
+    "InterpretationLifecycleEvent",
+    "InterpretationLifecycleState",
+    "InterpretationMaturity",
+    "InterpretationReviewState",
     "LifecycleEvent",
     "LifecycleReasonCode",
     "LifecycleState",
@@ -71,6 +115,10 @@ __all__ = [
     "SupersessionReceipt",
     "SupersessionRequest",
     "UtilityAssessment",
+    "AssertionMode",
+    "ClosureAction",
+    "ConfidenceBasis",
+    "ConfidenceBasisKind",
     "admission_consideration_id",
     "canonical_json_bytes",
     "canonical_json_data",
