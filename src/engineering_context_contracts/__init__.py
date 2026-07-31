@@ -68,6 +68,12 @@ from engineering_context_contracts.resources import (
     contract_manifest,
     verify_packaged_contracts,
 )
+from engineering_context_contracts.software_assurance import (
+    SoftwareCoverageObligation,
+    SoftwareCoverageObligationReleaseReceipt,
+    SoftwareCoverageObligationReleaseRecord,
+    SoftwareCoverageObligationSet,
+)
 
 __version__ = "0.2.0"
 
@@ -112,6 +118,10 @@ __all__ = [
     "ResolveEvidenceRequest",
     "ResolveEvidenceResponse",
     "SharedContract",
+    "SoftwareCoverageObligation",
+    "SoftwareCoverageObligationReleaseReceipt",
+    "SoftwareCoverageObligationReleaseRecord",
+    "SoftwareCoverageObligationSet",
     "SupersessionReceipt",
     "SupersessionRequest",
     "UtilityAssessment",

@@ -1,0 +1,112 @@
+{
+  "receipt": {
+    "access_policy": {
+      "artifact_schema_version": "1.0",
+      "artifact_type": "controlled-access-policy",
+      "schema_version": "1.0",
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "uri": "controlled-policy://synthetic-radio/software-assurance-v1"
+    },
+    "artifact_type": "software-coverage-obligation-release-receipt",
+    "content_contract": "normalized-admitted-software-coverage-obligations-and-references-only",
+    "no_raw_content": true,
+    "obligation_set": {
+      "artifact_schema_version": "1.0",
+      "artifact_type": "software-coverage-obligation-set",
+      "schema_version": "1.0",
+      "sha256": "ad6a77ea53992e628415c185563e3a4649fae864e3041f94a8fafff90e9ca952",
+      "uri": "component-lens://software-coverage-obligation-sets/ad6a77ea53992e628415c185563e3a4649fae864e3041f94a8fafff90e9ca952"
+    },
+    "project_id": "synthetic-radio",
+    "recipient": "engineering-memory",
+    "release_policy": {
+      "artifact_schema_version": "1.0",
+      "artifact_type": "software-coverage-obligation-release-policy",
+      "schema_version": "1.0",
+      "sha256": "e08c0bc48923cb99312c5be4ef995e65664846cee9db90bff464016f05e1c39b",
+      "uri": "component-lens://software-coverage-release-policies/e08c0bc48923cb99312c5be4ef995e65664846cee9db90bff464016f05e1c39b"
+    },
+    "released_obligations": {
+      "admission_receipt": {
+        "artifact_schema_version": "1.0",
+        "artifact_type": "software-coverage-obligation-admission-receipt",
+        "schema_version": "1.0",
+        "sha256": "e86e4133a9b65ff703ac3fda01980206bf5c8f6ad3ff1d6e3e4c0431df1c564a",
+        "uri": "component-lens://software-coverage-admissions/e86e4133a9b65ff703ac3fda01980206bf5c8f6ad3ff1d6e3e4c0431df1c564a"
+      },
+      "artifact_type": "software-coverage-obligation-set",
+      "authority_class": "normative",
+      "coverage_scope": "enumerated-obligations-only",
+      "lower_tiers_are_cumulative": true,
+      "obligations": [
+        {
+          "excluded_source_kinds": [
+            "third-party-cots",
+            "third-party-open-source"
+          ],
+          "metric_label": "source-code-structural-coverage",
+          "obligation_id": "GRA-MPU-046",
+          "requirement_statement": "Provide automated tests of non-COTS microprocessor software with at least 50% source-code structural coverage, excluding third-party COTS and open-source libraries.",
+          "schema_version": "1.0",
+          "source": {
+            "artifact_schema_version": "14.0",
+            "artifact_type": "authoritative-standard-document",
+            "schema_version": "1.0",
+            "sha256": "eb1fe62b28a03781f3384ee403c0c0eb969b89c971ac834a106942054e692019",
+            "uri": "git+https://gitlab.com/open-arsenal/ams-gra/standard.git@3645c6916761bd32ef0be8735fa6e741bada9a49#Architecture_Volumes/Digital_Payload_Processor_MPU.pdf"
+          },
+          "source_locator": "Digital Payload Processor MPU v14.0, PDF page 17, GRA-MPU-046",
+          "subject": "non-cots-microprocessor-software",
+          "threshold_percent": 50.0,
+          "tier": 1,
+          "verification_method": "demonstration"
+        },
+        {
+          "excluded_source_kinds": [
+            "third-party-cots",
+            "third-party-open-source"
+          ],
+          "metric_label": "source-code-structural-coverage",
+          "obligation_id": "GRA-MPU-077",
+          "requirement_statement": "Provide automated tests of non-COTS microprocessor software with at least 80% source-code structural coverage, excluding third-party COTS and open-source libraries.",
+          "schema_version": "1.0",
+          "source": {
+            "artifact_schema_version": "14.0",
+            "artifact_type": "authoritative-standard-document",
+            "schema_version": "1.0",
+            "sha256": "eb1fe62b28a03781f3384ee403c0c0eb969b89c971ac834a106942054e692019",
+            "uri": "git+https://gitlab.com/open-arsenal/ams-gra/standard.git@3645c6916761bd32ef0be8735fa6e741bada9a49#Architecture_Volumes/Digital_Payload_Processor_MPU.pdf"
+          },
+          "source_locator": "Digital Payload Processor MPU v14.0, PDF page 17, GRA-MPU-077",
+          "subject": "non-cots-microprocessor-software",
+          "threshold_percent": 80.0,
+          "tier": 3,
+          "verification_method": "demonstration"
+        }
+      ],
+      "project_id": "synthetic-radio",
+      "schema_version": "1.0",
+      "set_id": "ams-gra-software-coverage-2026.01",
+      "standard": "AMS-GRA",
+      "standard_revision": "2026.01",
+      "standard_source": {
+        "artifact_schema_version": "14.0",
+        "artifact_type": "authoritative-standard-document",
+        "schema_version": "1.0",
+        "sha256": "eb1fe62b28a03781f3384ee403c0c0eb969b89c971ac834a106942054e692019",
+        "uri": "git+https://gitlab.com/open-arsenal/ams-gra/standard.git@3645c6916761bd32ef0be8735fa6e741bada9a49#Architecture_Volumes/Digital_Payload_Processor_MPU.pdf"
+      },
+      "synthetic_fixture": true,
+      "whole_standard_coverage_claimed": false
+    },
+    "schema_version": "1.0"
+  },
+  "reference": {
+    "artifact_schema_version": "1.0",
+    "artifact_type": "software-coverage-obligation-release-receipt",
+    "schema_version": "1.0",
+    "sha256": "64c7f905b499b222e1a52ce97d266df1d4fd9cf05736ad72f3b404c212238f7c",
+    "uri": "controlled-project://synthetic-radio/software-coverage-obligation-releases/64c7f905b499b222e1a52ce97d266df1d4fd9cf05736ad72f3b404c212238f7c"
+  },
+  "schema_version": "1.0"
+}

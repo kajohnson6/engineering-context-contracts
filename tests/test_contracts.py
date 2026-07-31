@@ -22,7 +22,8 @@ def test_manifest_verifies_every_normative_artifact():
     manifest = verify_packaged_contracts()
     assert manifest["core_contract_version"] == "1.0"
     assert manifest["canonicalization_profile"] == ("engineering-context-jcs-1.0")
-    assert len(manifest["artifacts"]) == 10
+    assert manifest["package_version"] == "0.3.0"
+    assert len(manifest["artifacts"]) == 12
 
 
 @pytest.mark.parametrize(
@@ -43,6 +44,11 @@ def test_manifest_verifies_every_normative_artifact():
         (
             "schemas/evidence-interpretation/1.0/schema.json",
             "fixtures/evidence-interpretation-ams-pps-50-ohm-v1.json",
+        ),
+        (
+            "schemas/extensions/software-coverage-obligation-release/"
+            "1.0/schema.json",
+            "fixtures/ams-gra-software-coverage-release-v1.json",
         ),
     ],
 )

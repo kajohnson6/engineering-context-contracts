@@ -6,6 +6,11 @@
       "sha256": "0c07daec0782d860d4298aaf91dac4f9263ae9be81004a2b41c2168c0d5dc491"
     },
     {
+      "byte_count": 5548,
+      "path": "fixtures/ams-gra-software-coverage-release-v1.json",
+      "sha256": "77b26f8e9bd0570e94379a360e4afc0dbfeab00ff4e771b5253d1a301c556d0e"
+    },
+    {
       "byte_count": 6336,
       "path": "fixtures/controlled-field-release-rev-c-d-failure.json",
       "sha256": "c4ed4b7d19cf2ce84cf47879ac47ef810624bd683dafaba1a86fe5af81c00369"
@@ -49,10 +54,15 @@
       "byte_count": 18000,
       "path": "schemas/extensions/repository-verification-release/1.0/schema.json",
       "sha256": "da0c2ddd5e06eacc1b61f9d094e889c1d38460213870887276734e2e20858f20"
+    },
+    {
+      "byte_count": 8641,
+      "path": "schemas/extensions/software-coverage-obligation-release/1.0/schema.json",
+      "sha256": "78d5851af63eda6ef1a61c7abe391256269e190c25ff5047ec88674182d94f4e"
     }
   ],
   "canonicalization_profile": "engineering-context-jcs-1.0",
   "core_contract_version": "1.0",
   "manifest_version": "1.0",
-  "package_version": "0.2.0"
+  "package_version": "0.3.0"
 }

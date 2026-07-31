@@ -1,0 +1,321 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "description": "Provider-neutral locator plus content identity.\n\n``uri`` may move or expire.  ``sha256`` is the artifact identity.",
+      "properties": {
+        "artifact_schema_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Schema Version"
+        },
+        "artifact_type": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "uri",
+        "sha256"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "SoftwareCoverageObligation": {
+      "additionalProperties": false,
+      "properties": {
+        "excluded_source_kinds": {
+          "items": {
+            "enum": [
+              "third-party-cots",
+              "third-party-open-source"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Excluded Source Kinds",
+          "type": "array"
+        },
+        "metric_label": {
+          "const": "source-code-structural-coverage",
+          "title": "Metric Label",
+          "type": "string"
+        },
+        "obligation_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Obligation Id",
+          "type": "string"
+        },
+        "requirement_statement": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Requirement Statement",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "source_locator": {
+          "maxLength": 1000,
+          "minLength": 1,
+          "title": "Source Locator",
+          "type": "string"
+        },
+        "subject": {
+          "const": "non-cots-microprocessor-software",
+          "title": "Subject",
+          "type": "string"
+        },
+        "threshold_percent": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Threshold Percent",
+          "type": "number"
+        },
+        "tier": {
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "title": "Tier",
+          "type": "integer"
+        },
+        "verification_method": {
+          "const": "demonstration",
+          "title": "Verification Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "obligation_id",
+        "source_locator",
+        "requirement_statement",
+        "tier",
+        "threshold_percent",
+        "subject",
+        "metric_label",
+        "verification_method",
+        "excluded_source_kinds",
+        "source"
+      ],
+      "title": "SoftwareCoverageObligation",
+      "type": "object"
+    },
+    "SoftwareCoverageObligationReleaseReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "artifact_type": {
+          "const": "software-coverage-obligation-release-receipt",
+          "default": "software-coverage-obligation-release-receipt",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "content_contract": {
+          "const": "normalized-admitted-software-coverage-obligations-and-references-only",
+          "default": "normalized-admitted-software-coverage-obligations-and-references-only",
+          "title": "Content Contract",
+          "type": "string"
+        },
+        "no_raw_content": {
+          "const": true,
+          "default": true,
+          "title": "No Raw Content",
+          "type": "boolean"
+        },
+        "obligation_set": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "project_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Project Id",
+          "type": "string"
+        },
+        "recipient": {
+          "const": "engineering-memory",
+          "title": "Recipient",
+          "type": "string"
+        },
+        "release_policy": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "released_obligations": {
+          "$ref": "#/$defs/SoftwareCoverageObligationSet"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "project_id",
+        "recipient",
+        "access_policy",
+        "release_policy",
+        "obligation_set",
+        "released_obligations"
+      ],
+      "title": "SoftwareCoverageObligationReleaseReceipt",
+      "type": "object"
+    },
+    "SoftwareCoverageObligationSet": {
+      "additionalProperties": false,
+      "properties": {
+        "admission_receipt": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "artifact_type": {
+          "const": "software-coverage-obligation-set",
+          "default": "software-coverage-obligation-set",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "authority_class": {
+          "const": "normative",
+          "default": "normative",
+          "title": "Authority Class",
+          "type": "string"
+        },
+        "coverage_scope": {
+          "const": "enumerated-obligations-only",
+          "default": "enumerated-obligations-only",
+          "title": "Coverage Scope",
+          "type": "string"
+        },
+        "lower_tiers_are_cumulative": {
+          "const": true,
+          "default": true,
+          "title": "Lower Tiers Are Cumulative",
+          "type": "boolean"
+        },
+        "obligations": {
+          "items": {
+            "$ref": "#/$defs/SoftwareCoverageObligation"
+          },
+          "minItems": 1,
+          "title": "Obligations",
+          "type": "array"
+        },
+        "project_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Project Id",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "set_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Set Id",
+          "type": "string"
+        },
+        "standard": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Standard",
+          "type": "string"
+        },
+        "standard_revision": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Standard Revision",
+          "type": "string"
+        },
+        "standard_source": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "synthetic_fixture": {
+          "default": false,
+          "title": "Synthetic Fixture",
+          "type": "boolean"
+        },
+        "whole_standard_coverage_claimed": {
+          "const": false,
+          "default": false,
+          "title": "Whole Standard Coverage Claimed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "set_id",
+        "project_id",
+        "standard",
+        "standard_revision",
+        "standard_source",
+        "admission_receipt",
+        "obligations"
+      ],
+      "title": "SoftwareCoverageObligationSet",
+      "type": "object"
+    }
+  },
+  "$id": "https://engineering-context-contracts.invalid/schemas/extensions/software-coverage-obligation-release/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "receipt": {
+      "$ref": "#/$defs/SoftwareCoverageObligationReleaseReceipt"
+    },
+    "reference": {
+      "$ref": "#/$defs/ArtifactRef"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "reference",
+    "receipt"
+  ],
+  "title": "SoftwareCoverageObligationReleaseRecord",
+  "type": "object"
+}
