@@ -43,7 +43,8 @@ project-specific data are prohibited from the included fixtures.
 
 Package version and wire `schema_version` are independent:
 
-- package `0.2.0` adds the evidence-interpretation wire contract;
+- package `0.2.0` added the evidence-interpretation wire contract;
+- package `0.3.0` adds software-coverage obligation release contracts;
 - wire contract `1.0` rejects unknown versions;
 - compatible additions require a new explicitly supported schema version;
 - consumers must fail closed on unknown required semantics.
