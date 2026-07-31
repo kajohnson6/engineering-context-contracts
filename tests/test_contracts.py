@@ -6,6 +6,7 @@ import pytest
 from jsonschema import Draft202012Validator
 from pydantic import ValidationError
 
+import engineering_context_contracts
 from engineering_context_contracts import (
     ArtifactRef,
     EvidenceInterpretationReceipt,
@@ -20,6 +21,7 @@ ROOT = Path(__file__).parents[1]
 
 def test_manifest_verifies_every_normative_artifact():
     manifest = verify_packaged_contracts()
+    assert engineering_context_contracts.__version__ == "0.3.0"
     assert manifest["core_contract_version"] == "1.0"
     assert manifest["canonicalization_profile"] == ("engineering-context-jcs-1.0")
     assert manifest["package_version"] == "0.3.0"
