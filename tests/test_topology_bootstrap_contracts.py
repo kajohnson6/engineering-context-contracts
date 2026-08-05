@@ -27,6 +27,8 @@ def _record() -> TopologyBootstrapHandoffRecord:
     policy = TopologyBootstrapReleasePolicy(
         policy_id="synthetic-public-topology-release",
         scope_id="synthetic-system",
+        project_id="synthetic-project",
+        configuration="baseline",
         access_policy=access_policy,
         permitted_node_kinds=["repository"],
         permitted_relations=["references-repository"],

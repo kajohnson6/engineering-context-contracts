@@ -3,8 +3,8 @@
   "reference": {
     "schema_version": "1.0",
     "artifact_type": "topology-bootstrap-handoff-receipt",
-    "uri": "component-lens://topology-bootstrap-handoffs/04fdf3c0ceef916a238100eedcc8b292ede08598ec1a7258a09aa5a681d9ea40",
-    "sha256": "04fdf3c0ceef916a238100eedcc8b292ede08598ec1a7258a09aa5a681d9ea40",
+    "uri": "component-lens://topology-bootstrap-handoffs/1eb9cf47d28813ce2693e83534b1c21be3db1b2d58ef4bd0cc787181a477effa",
+    "sha256": "1eb9cf47d28813ce2693e83534b1c21be3db1b2d58ef4bd0cc787181a477effa",
     "artifact_schema_version": "1.0"
   },
   "policy": {
@@ -12,6 +12,8 @@
     "artifact_type": "topology-bootstrap-release-policy",
     "policy_id": "synthetic-public-topology-release",
     "scope_id": "synthetic-system",
+    "project_id": "synthetic-project",
+    "configuration": "baseline",
     "access_policy": {
       "schema_version": "1.0",
       "artifact_type": "public-access-policy",
@@ -59,8 +61,8 @@
     "release_policy": {
       "schema_version": "1.0",
       "artifact_type": "topology-bootstrap-release-policy",
-      "uri": "component-lens://topology-bootstrap-release-policies/f7154cdcf2da997d7a41cefe489acbe29e21b20d9ab45c526ec433b6d0f37dbe",
-      "sha256": "f7154cdcf2da997d7a41cefe489acbe29e21b20d9ab45c526ec433b6d0f37dbe",
+      "uri": "component-lens://topology-bootstrap-release-policies/d66d5eb103a6ac8fd01647dcb59cfce636610bffbef4c0457bcbfff746567970",
+      "sha256": "d66d5eb103a6ac8fd01647dcb59cfce636610bffbef4c0457bcbfff746567970",
       "artifact_schema_version": "1.0"
     },
     "nodes": [

@@ -431,6 +431,12 @@
           "title": "Artifact Type",
           "type": "string"
         },
+        "configuration": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Configuration",
+          "type": "string"
+        },
         "enabled": {
           "default": false,
           "title": "Enabled",
@@ -476,6 +482,12 @@
           "title": "Policy Id",
           "type": "string"
         },
+        "project_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Project Id",
+          "type": "string"
+        },
         "recipient": {
           "const": "engineering-memory",
           "default": "engineering-memory",
@@ -503,6 +515,8 @@
       "required": [
         "policy_id",
         "scope_id",
+        "project_id",
+        "configuration",
         "access_policy",
         "permitted_node_kinds",
         "permitted_relations",

@@ -123,6 +123,8 @@ class TopologyBootstrapReleasePolicy(SharedContract):
     )
     policy_id: str = Field(min_length=1, max_length=200)
     scope_id: str = Field(min_length=1, max_length=300)
+    project_id: str = Field(min_length=1, max_length=128)
+    configuration: str = Field(min_length=1, max_length=300)
     access_policy: ArtifactRef
     recipient: Literal["engineering-memory"] = "engineering-memory"
     permitted_node_kinds: list[BootstrapTopologyNodeKind] = Field(min_length=1)
@@ -216,6 +218,10 @@ class TopologyBootstrapHandoffRecord(SharedContract):
             raise ValueError("handoff release policy reference mismatch")
         if self.receipt.source_scope_id != self.policy.scope_id:
             raise ValueError("handoff scope does not match release policy")
+        if self.receipt.project_id != self.policy.project_id:
+            raise ValueError("handoff project does not match release policy")
+        if self.receipt.configuration != self.policy.configuration:
+            raise ValueError("handoff configuration does not match release policy")
         if self.receipt.access_policy != self.policy.access_policy:
             raise ValueError("handoff access policy does not match release policy")
         if self.receipt.recipient != self.policy.recipient:
