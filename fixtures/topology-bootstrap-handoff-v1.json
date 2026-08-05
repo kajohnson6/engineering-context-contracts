@@ -1,0 +1,142 @@
+{
+  "schema_version": "1.0",
+  "reference": {
+    "schema_version": "1.0",
+    "artifact_type": "topology-bootstrap-handoff-receipt",
+    "uri": "component-lens://topology-bootstrap-handoffs/04fdf3c0ceef916a238100eedcc8b292ede08598ec1a7258a09aa5a681d9ea40",
+    "sha256": "04fdf3c0ceef916a238100eedcc8b292ede08598ec1a7258a09aa5a681d9ea40",
+    "artifact_schema_version": "1.0"
+  },
+  "policy": {
+    "schema_version": "1.0",
+    "artifact_type": "topology-bootstrap-release-policy",
+    "policy_id": "synthetic-public-topology-release",
+    "scope_id": "synthetic-system",
+    "access_policy": {
+      "schema_version": "1.0",
+      "artifact_type": "public-access-policy",
+      "uri": "component-lens://synthetic/public-access-policy/a",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "artifact_schema_version": "1.0"
+    },
+    "recipient": "engineering-memory",
+    "permitted_node_kinds": [
+      "repository"
+    ],
+    "permitted_relations": [
+      "references-repository"
+    ],
+    "max_nodes": 8,
+    "max_edges": 16,
+    "allow_labels": true,
+    "allow_attributes": true,
+    "allow_detailed_locators": true,
+    "no_raw_content": true,
+    "enabled": true,
+    "revoked": false
+  },
+  "receipt": {
+    "schema_version": "1.0",
+    "artifact_type": "topology-bootstrap-handoff-receipt",
+    "source_bootstrap": {
+      "schema_version": "1.0",
+      "artifact_type": "topology-bootstrap-draft",
+      "uri": "component-lens://synthetic/topology-bootstrap-draft/b",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "artifact_schema_version": "1.0"
+    },
+    "source_scope_id": "synthetic-system",
+    "project_id": "synthetic-project",
+    "configuration": "baseline",
+    "recipient": "engineering-memory",
+    "access_policy": {
+      "schema_version": "1.0",
+      "artifact_type": "public-access-policy",
+      "uri": "component-lens://synthetic/public-access-policy/a",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "artifact_schema_version": "1.0"
+    },
+    "release_policy": {
+      "schema_version": "1.0",
+      "artifact_type": "topology-bootstrap-release-policy",
+      "uri": "component-lens://topology-bootstrap-release-policies/f7154cdcf2da997d7a41cefe489acbe29e21b20d9ab45c526ec433b6d0f37dbe",
+      "sha256": "f7154cdcf2da997d7a41cefe489acbe29e21b20d9ab45c526ec433b6d0f37dbe",
+      "artifact_schema_version": "1.0"
+    },
+    "nodes": [
+      {
+        "schema_version": "1.0",
+        "node_id": "repository:flight-app",
+        "node_kind": "repository",
+        "label": "Flight application",
+        "attributes": {
+          "source_revision": "1111111111111111111111111111111111111111"
+        },
+        "evidence": [
+          {
+            "schema_version": "1.0",
+            "artifact_type": "topology-bootstrap-draft",
+            "uri": "component-lens://synthetic/topology-bootstrap-draft/b",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "artifact_schema_version": "1.0"
+          }
+        ],
+        "knowledge_state": "extracted-unverified"
+      },
+      {
+        "schema_version": "1.0",
+        "node_id": "repository:sensor-driver",
+        "node_kind": "repository",
+        "label": "Sensor driver",
+        "attributes": {
+          "source_revision": "2222222222222222222222222222222222222222"
+        },
+        "evidence": [
+          {
+            "schema_version": "1.0",
+            "artifact_type": "topology-bootstrap-draft",
+            "uri": "component-lens://synthetic/topology-bootstrap-draft/b",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "artifact_schema_version": "1.0"
+          }
+        ],
+        "knowledge_state": "extracted-unverified"
+      }
+    ],
+    "edges": [
+      {
+        "schema_version": "1.0",
+        "source_edge_id": "bootstrap-edge:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "source_node_id": "repository:flight-app",
+        "relation": "references-repository",
+        "target_node_id": "repository:sensor-driver",
+        "locators": [
+          {
+            "schema_version": "1.0",
+            "locator_kind": "repository-path-line",
+            "artifact": {
+              "schema_version": "1.0",
+              "artifact_type": "code-file",
+              "uri": "component-lens://synthetic/code-file/c",
+              "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+              "artifact_schema_version": "1.0"
+            },
+            "page_number": null,
+            "path": "compose.yaml",
+            "line_number": 12,
+            "element_id": null,
+            "component_ref": null,
+            "pin": null
+          }
+        ],
+        "knowledge_state": "extracted-unverified"
+      }
+    ],
+    "completeness": "bounded-partial",
+    "relation_semantics_unverified": true,
+    "usable_as_evidence": false,
+    "promotion_required": true,
+    "no_raw_content": true,
+    "content_contract": "unverified-topology-nodes-edges-and-immutable-provenance-only"
+  }
+}

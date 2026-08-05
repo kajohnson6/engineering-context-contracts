@@ -1,0 +1,543 @@
+{
+  "$defs": {
+    "ArtifactRef": {
+      "additionalProperties": false,
+      "description": "Provider-neutral locator plus content identity.\n\n``uri`` may move or expire.  ``sha256`` is the artifact identity.",
+      "properties": {
+        "artifact_schema_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Schema Version"
+        },
+        "artifact_type": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Sha256",
+          "type": "string"
+        },
+        "uri": {
+          "maxLength": 2000,
+          "minLength": 1,
+          "title": "Uri",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact_type",
+        "uri",
+        "sha256"
+      ],
+      "title": "ArtifactRef",
+      "type": "object"
+    },
+    "BootstrapTopologyEdge": {
+      "additionalProperties": false,
+      "properties": {
+        "knowledge_state": {
+          "const": "extracted-unverified",
+          "default": "extracted-unverified",
+          "title": "Knowledge State",
+          "type": "string"
+        },
+        "locators": {
+          "items": {
+            "$ref": "#/$defs/BootstrapTopologyLocator"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "title": "Locators",
+          "type": "array"
+        },
+        "relation": {
+          "$ref": "#/$defs/BootstrapTopologyRelation"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_edge_id": {
+          "maxLength": 500,
+          "minLength": 1,
+          "title": "Source Edge Id",
+          "type": "string"
+        },
+        "source_node_id": {
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:/-]{0,299}$",
+          "title": "Source Node Id",
+          "type": "string"
+        },
+        "target_node_id": {
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:/-]{0,299}$",
+          "title": "Target Node Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_edge_id",
+        "source_node_id",
+        "relation",
+        "target_node_id",
+        "locators"
+      ],
+      "title": "BootstrapTopologyEdge",
+      "type": "object"
+    },
+    "BootstrapTopologyLocator": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "component_ref": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Ref"
+        },
+        "element_id": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Element Id"
+        },
+        "line_number": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Line Number"
+        },
+        "locator_kind": {
+          "$ref": "#/$defs/BootstrapTopologyLocatorKind"
+        },
+        "page_number": {
+          "anyOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page Number"
+        },
+        "path": {
+          "anyOf": [
+            {
+              "maxLength": 1024,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Path"
+        },
+        "pin": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Pin"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "locator_kind",
+        "artifact"
+      ],
+      "title": "BootstrapTopologyLocator",
+      "type": "object"
+    },
+    "BootstrapTopologyLocatorKind": {
+      "enum": [
+        "artifact-only",
+        "document-page-line",
+        "repository-path-line",
+        "kicad-net-pin"
+      ],
+      "title": "BootstrapTopologyLocatorKind",
+      "type": "string"
+    },
+    "BootstrapTopologyNode": {
+      "additionalProperties": false,
+      "properties": {
+        "attributes": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Attributes",
+          "type": "object"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/ArtifactRef"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Evidence",
+          "type": "array"
+        },
+        "knowledge_state": {
+          "const": "extracted-unverified",
+          "default": "extracted-unverified",
+          "title": "Knowledge State",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "node_id": {
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._:/-]{0,299}$",
+          "title": "Node Id",
+          "type": "string"
+        },
+        "node_kind": {
+          "$ref": "#/$defs/BootstrapTopologyNodeKind"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node_id",
+        "node_kind",
+        "label",
+        "evidence"
+      ],
+      "title": "BootstrapTopologyNode",
+      "type": "object"
+    },
+    "BootstrapTopologyNodeKind": {
+      "enum": [
+        "document",
+        "repository",
+        "component",
+        "interface"
+      ],
+      "title": "BootstrapTopologyNodeKind",
+      "type": "string"
+    },
+    "BootstrapTopologyRelation": {
+      "enum": [
+        "references-document",
+        "references-repository",
+        "connected-to-interface"
+      ],
+      "title": "BootstrapTopologyRelation",
+      "type": "string"
+    },
+    "TopologyBootstrapHandoffReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "artifact_type": {
+          "const": "topology-bootstrap-handoff-receipt",
+          "default": "topology-bootstrap-handoff-receipt",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "completeness": {
+          "const": "bounded-partial",
+          "default": "bounded-partial",
+          "title": "Completeness",
+          "type": "string"
+        },
+        "configuration": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Configuration",
+          "type": "string"
+        },
+        "content_contract": {
+          "const": "unverified-topology-nodes-edges-and-immutable-provenance-only",
+          "default": "unverified-topology-nodes-edges-and-immutable-provenance-only",
+          "title": "Content Contract",
+          "type": "string"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/BootstrapTopologyEdge"
+          },
+          "title": "Edges",
+          "type": "array"
+        },
+        "no_raw_content": {
+          "const": true,
+          "default": true,
+          "title": "No Raw Content",
+          "type": "boolean"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/BootstrapTopologyNode"
+          },
+          "minItems": 1,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "project_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Project Id",
+          "type": "string"
+        },
+        "promotion_required": {
+          "const": true,
+          "default": true,
+          "title": "Promotion Required",
+          "type": "boolean"
+        },
+        "recipient": {
+          "const": "engineering-memory",
+          "default": "engineering-memory",
+          "title": "Recipient",
+          "type": "string"
+        },
+        "relation_semantics_unverified": {
+          "const": true,
+          "default": true,
+          "title": "Relation Semantics Unverified",
+          "type": "boolean"
+        },
+        "release_policy": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "source_bootstrap": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "source_scope_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Source Scope Id",
+          "type": "string"
+        },
+        "usable_as_evidence": {
+          "const": false,
+          "default": false,
+          "title": "Usable As Evidence",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source_bootstrap",
+        "source_scope_id",
+        "project_id",
+        "configuration",
+        "access_policy",
+        "release_policy",
+        "nodes"
+      ],
+      "title": "TopologyBootstrapHandoffReceipt",
+      "type": "object"
+    },
+    "TopologyBootstrapReleasePolicy": {
+      "additionalProperties": false,
+      "properties": {
+        "access_policy": {
+          "$ref": "#/$defs/ArtifactRef"
+        },
+        "allow_attributes": {
+          "default": false,
+          "title": "Allow Attributes",
+          "type": "boolean"
+        },
+        "allow_detailed_locators": {
+          "default": false,
+          "title": "Allow Detailed Locators",
+          "type": "boolean"
+        },
+        "allow_labels": {
+          "default": false,
+          "title": "Allow Labels",
+          "type": "boolean"
+        },
+        "artifact_type": {
+          "const": "topology-bootstrap-release-policy",
+          "default": "topology-bootstrap-release-policy",
+          "title": "Artifact Type",
+          "type": "string"
+        },
+        "enabled": {
+          "default": false,
+          "title": "Enabled",
+          "type": "boolean"
+        },
+        "max_edges": {
+          "maximum": 500000,
+          "minimum": 0,
+          "title": "Max Edges",
+          "type": "integer"
+        },
+        "max_nodes": {
+          "maximum": 100000,
+          "minimum": 1,
+          "title": "Max Nodes",
+          "type": "integer"
+        },
+        "no_raw_content": {
+          "const": true,
+          "default": true,
+          "title": "No Raw Content",
+          "type": "boolean"
+        },
+        "permitted_node_kinds": {
+          "items": {
+            "$ref": "#/$defs/BootstrapTopologyNodeKind"
+          },
+          "minItems": 1,
+          "title": "Permitted Node Kinds",
+          "type": "array"
+        },
+        "permitted_relations": {
+          "items": {
+            "$ref": "#/$defs/BootstrapTopologyRelation"
+          },
+          "minItems": 1,
+          "title": "Permitted Relations",
+          "type": "array"
+        },
+        "policy_id": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Policy Id",
+          "type": "string"
+        },
+        "recipient": {
+          "const": "engineering-memory",
+          "default": "engineering-memory",
+          "title": "Recipient",
+          "type": "string"
+        },
+        "revoked": {
+          "default": false,
+          "title": "Revoked",
+          "type": "boolean"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 300,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "policy_id",
+        "scope_id",
+        "access_policy",
+        "permitted_node_kinds",
+        "permitted_relations",
+        "max_nodes",
+        "max_edges"
+      ],
+      "title": "TopologyBootstrapReleasePolicy",
+      "type": "object"
+    }
+  },
+  "$id": "https://engineering-context-contracts.invalid/schemas/extensions/topology-bootstrap-handoff/1.0/schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "policy": {
+      "$ref": "#/$defs/TopologyBootstrapReleasePolicy"
+    },
+    "receipt": {
+      "$ref": "#/$defs/TopologyBootstrapHandoffReceipt"
+    },
+    "reference": {
+      "$ref": "#/$defs/ArtifactRef"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "reference",
+    "policy",
+    "receipt"
+  ],
+  "title": "TopologyBootstrapHandoffRecord",
+  "type": "object"
+}

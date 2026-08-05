@@ -21,11 +21,11 @@ ROOT = Path(__file__).parents[1]
 
 def test_manifest_verifies_every_normative_artifact():
     manifest = verify_packaged_contracts()
-    assert engineering_context_contracts.__version__ == "0.3.0"
+    assert engineering_context_contracts.__version__ == "0.4.0"
     assert manifest["core_contract_version"] == "1.0"
     assert manifest["canonicalization_profile"] == ("engineering-context-jcs-1.0")
-    assert manifest["package_version"] == "0.3.0"
-    assert len(manifest["artifacts"]) == 12
+    assert manifest["package_version"] == "0.4.0"
+    assert len(manifest["artifacts"]) == 14
 
 
 @pytest.mark.parametrize(
@@ -51,6 +51,10 @@ def test_manifest_verifies_every_normative_artifact():
             "schemas/extensions/software-coverage-obligation-release/"
             "1.0/schema.json",
             "fixtures/ams-gra-software-coverage-release-v1.json",
+        ),
+        (
+            "schemas/extensions/topology-bootstrap-handoff/1.0/schema.json",
+            "fixtures/topology-bootstrap-handoff-v1.json",
         ),
     ],
 )

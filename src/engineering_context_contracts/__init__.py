@@ -74,13 +74,30 @@ from engineering_context_contracts.software_assurance import (
     SoftwareCoverageObligationReleaseRecord,
     SoftwareCoverageObligationSet,
 )
+from engineering_context_contracts.topology_bootstrap import (
+    BootstrapTopologyEdge,
+    BootstrapTopologyLocator,
+    BootstrapTopologyLocatorKind,
+    BootstrapTopologyNode,
+    BootstrapTopologyNodeKind,
+    BootstrapTopologyRelation,
+    TopologyBootstrapHandoffReceipt,
+    TopologyBootstrapHandoffRecord,
+    TopologyBootstrapReleasePolicy,
+)
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 __all__ = [
     "ApplicabilityDecision",
     "ApplicabilityEnvelope",
     "ArtifactRef",
+    "BootstrapTopologyEdge",
+    "BootstrapTopologyLocator",
+    "BootstrapTopologyLocatorKind",
+    "BootstrapTopologyNode",
+    "BootstrapTopologyNodeKind",
+    "BootstrapTopologyRelation",
     "CacheDisposition",
     "CacheLayer",
     "CacheReceipt",
@@ -124,6 +141,9 @@ __all__ = [
     "SoftwareCoverageObligationSet",
     "SupersessionReceipt",
     "SupersessionRequest",
+    "TopologyBootstrapHandoffReceipt",
+    "TopologyBootstrapHandoffRecord",
+    "TopologyBootstrapReleasePolicy",
     "UtilityAssessment",
     "AssertionMode",
     "ClosureAction",

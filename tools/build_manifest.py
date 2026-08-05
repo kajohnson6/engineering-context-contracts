@@ -27,7 +27,7 @@ def main() -> int:
             )
     payload = {
         "manifest_version": "1.0",
-        "package_version": "0.3.0",
+        "package_version": "0.4.0",
         "core_contract_version": "1.0",
         "canonicalization_profile": "engineering-context-jcs-1.0",
         "artifacts": artifacts,

@@ -31,6 +31,11 @@
       "sha256": "d516b39bf1d62df8ed8bbf6cca1249c6b707f462ac0575f3bfd7a4fde586b3e7"
     },
     {
+      "byte_count": 5186,
+      "path": "fixtures/topology-bootstrap-handoff-v1.json",
+      "sha256": "fba32c0f46ab277327fd8e79b44ac263b3b76b3bfae1cf1755a4bfe0b975067b"
+    },
+    {
       "byte_count": 17560,
       "path": "schemas/evidence-interpretation/1.0/schema.json",
       "sha256": "997f6f0a7639837353866f534366e9ddda88b48781beb33848fb2c55cfbbcbd5"
@@ -59,10 +64,15 @@
       "byte_count": 8641,
       "path": "schemas/extensions/software-coverage-obligation-release/1.0/schema.json",
       "sha256": "78d5851af63eda6ef1a61c7abe391256269e190c25ff5047ec88674182d94f4e"
+    },
+    {
+      "byte_count": 13866,
+      "path": "schemas/extensions/topology-bootstrap-handoff/1.0/schema.json",
+      "sha256": "cf81ddab47069c688128ad233cac88b650a4d63af5d34a50ff2d396555180d2a"
     }
   ],
   "canonicalization_profile": "engineering-context-jcs-1.0",
   "core_contract_version": "1.0",
   "manifest_version": "1.0",
-  "package_version": "0.3.0"
+  "package_version": "0.4.0"
 }

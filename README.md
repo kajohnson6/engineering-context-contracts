@@ -26,7 +26,8 @@ Provider extensions currently cover:
 
 - controlled field-level release;
 - exact-Git structural evidence release;
-- commit-bound verified-execution release.
+- commit-bound verified-execution release; and
+- explicitly unverified bootstrap-topology handoff.
 
 The core package also publishes the provider-neutral
 `EvidenceInterpretationReceipt` wire contract. It separates normative,
@@ -45,6 +46,7 @@ Package version and wire `schema_version` are independent:
 
 - package `0.2.0` added the evidence-interpretation wire contract;
 - package `0.3.0` adds software-coverage obligation release contracts;
+- package `0.4.0` adds bootstrap-topology handoff contracts and policy bounds;
 - wire contract `1.0` rejects unknown versions;
 - compatible additions require a new explicitly supported schema version;
 - consumers must fail closed on unknown required semantics.
